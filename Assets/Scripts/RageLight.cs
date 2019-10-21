@@ -71,9 +71,11 @@ public class RageLight : MonoBehaviour
             }
             else
             {
-                currentRageImage.fillAmount += rageLevel * Time.deltaTime;
-                rageIconAnim.SetBool("InLight", true);
-
+                if (!MosqitController.isInRagdoll)
+                {
+                    currentRageImage.fillAmount += rageLevel * Time.deltaTime;
+                    rageIconAnim.SetBool("InLight", true);
+                }
             }
 
         }

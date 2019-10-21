@@ -148,8 +148,11 @@ public class WaspMove : MonoBehaviour
 
     void PursuePlayer()
     {
-        transform.forward = Vector3.RotateTowards(transform.forward, player.position - transform.position, rotSpeed * Time.deltaTime, 0.0f);
-        transform.position = Vector3.MoveTowards(transform.position, player.position, pursueSpeed * Time.deltaTime);
+        if (player != null)
+        {
+            transform.forward = Vector3.RotateTowards(transform.forward, player.position - transform.position, rotSpeed * Time.deltaTime, 0.0f);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, pursueSpeed * Time.deltaTime);
+        }
     }
 
     public enum WaspState

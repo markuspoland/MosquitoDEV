@@ -88,6 +88,7 @@ public class RagdollToggle2 : MonoBehaviour
 
     public void RagdollEnabled()
     {
+        MosqitController.isInRagdoll = true;
         ragdollEnabled = true;
         deathText.gameObject.SetActive(true);
 
@@ -129,7 +130,8 @@ public class RagdollToggle2 : MonoBehaviour
 
     public void RagdollDisabled()
     {
-        
+        MosqitController.isInRagdoll = false;
+        ragdollEnabled = false;
         foreach (var collider in childrenCollider)
         {
             collider.enabled = false;

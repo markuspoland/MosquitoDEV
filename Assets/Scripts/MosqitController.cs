@@ -22,6 +22,7 @@ public class MosqitController : MonoBehaviour
     float rotationYVelocity;
     public static bool playerDead;
     public static bool isFlipping;
+    public static bool isInRagdoll;
     RotationKeeper rotationKeeper;
     AudioSource mosquitoAudio;
     float startPitch;
@@ -43,12 +44,14 @@ public class MosqitController : MonoBehaviour
     float startDashTime;
     bool dashingLeft;
     bool dashingRight;
+    float cooldown;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        playerDead = false;       
+        playerDead = false;
+        isInRagdoll = false;
         currentYRotation = 90f;
         wantedYRotation = 90f;
         rotationKeeper = FindObjectOfType<RotationKeeper>();
@@ -70,13 +73,22 @@ public class MosqitController : MonoBehaviour
         dashRightButton.onClick.AddListener(DashRightClick);
         mosquitoAudio = GetComponent<AudioSource>();
         startPitch = mosquitoAudio.pitch;
+        cooldown = 0f;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-                
+        if (cooldown > 0f)
+        {
+            cooldown -= Time.deltaTime;
+        }
+
+        if (cooldown <= 0f)
+        {
+            cooldown = 0f;
+        }
     }
 
     private void FixedUpdate()
@@ -204,15 +216,22 @@ public class MosqitController : MonoBehaviour
     
     void DashLeftClick()
     {
-        
-        anim.SetTrigger("dashleft");
-        dashingLeft = true;
+        if (cooldown <= 0f)
+        {
+            anim.SetTrigger("dashleft");
+            dashingLeft = true;
+            cooldown = 0.8f;
+        }
     }
 
     void DashRightClick()
     {
-        anim.SetTrigger("dashright");
-        dashingRight = true;
+        if (cooldown <= 0f)
+        {
+            anim.SetTrigger("dashright");
+            dashingRight = true;
+            cooldown = 0.8f;
+        }
     }
 
     void DashLeft()
