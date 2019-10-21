@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 717ab52d0bcddbd4ab17ef7ca50961b8
+labels:
+- Camera
+- Fade
+- Fading
+- Transparent
+timeCreated: 1490364507
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - transparentMaterial: {fileID: 2100000, guid: a550ce2ad27df0c41a52608c4972af10,
+      type: 2}
+  - playerTransform: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

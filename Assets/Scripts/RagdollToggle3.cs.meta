@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f35573d40b1a9b740b7d5a3bce86d50f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - newMosquito: {instanceID: 0}
+  - deathText: {instanceID: 0}
+  - bloodFx: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

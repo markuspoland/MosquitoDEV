@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - JoystickVert
+  - JoystickHor
+  - ReviveButton
+  - RootJoint
+  - vcam1
+  - vcam2
+  - PlayerRevived1
+  - Rage1
+  - Rage
+  - Rage2
+  - Gameover
+  - RestartButton
+  - DeathCount
+  - Flip
+  - Boy
+  - LeftRoll
+  - RightRoll
+  - DeskLight
+  - TheNet
+  - LeftArmCol
+  - SuckButton
+  - BloodSpot1
+  - vcam3
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
