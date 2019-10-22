@@ -132,7 +132,7 @@ public class RagdollToggle3 : MonoBehaviour
         IsDead = true;
         RagdollEnabled();
         Debug.Log("COLLIDED!");
-        
+        LevelManager.TakeLife(0);
     }
 
     void ChangePlayerState()

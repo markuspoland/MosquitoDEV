@@ -170,13 +170,14 @@ public class RagdollToggle : MonoBehaviour
         {
             Instantiate(bloodFx, transform.position, Quaternion.identity);
             RagdollEnabled();
+            LevelManager.TakeLife(3);
         } else
         {
             isCaught = true;
             anim.SetBool("caught", isCaught);
             Instantiate(bloodFx, transform.position, Quaternion.identity);
             NetCaught();
-            
+            LevelManager.TakeLife(3);
         }
         
         

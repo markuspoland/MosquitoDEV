@@ -163,6 +163,7 @@ public class RagdollToggle2 : MonoBehaviour
         {
             GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             RagdollEnabled();
+            LevelManager.TakeLife(1);
         }
         else
         {
@@ -170,6 +171,7 @@ public class RagdollToggle2 : MonoBehaviour
             anim.SetBool("caught", isCaught);
             GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             NetCaught();
+            LevelManager.TakeLife(1);
         }
 
     }
