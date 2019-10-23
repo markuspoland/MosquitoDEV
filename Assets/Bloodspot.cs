@@ -10,12 +10,18 @@ public class Bloodspot : MonoBehaviour
     float distanceFromBloodSpot;
     Transform player;
     Animator playerAnim;
+    CapsuleCollider playerCol;
+
+    public Image bloodFrame;
+    public Image bloodFill;
     // Start is called before the first frame update
     void Start()
     {
         suckButton = GameObject.FindGameObjectWithTag("SuckButton").GetComponent<Button>();
         suckButton.onClick.AddListener(Bloodsuck.Suck);
         suckButton.gameObject.SetActive(false);
+        bloodFrame.gameObject.SetActive(false);
+        bloodFill.gameObject.SetActive(false);
         InvokeRepeating("GetPlayer", 0f, 5f);
     }
 
@@ -29,7 +35,7 @@ public class Bloodspot : MonoBehaviour
         {
             distanceFromBloodSpot = Vector3.Distance(transform.position, player.position);
 
-            if (distanceFromBloodSpot < 20f && !MosqitController.playerDead)
+            if (distanceFromBloodSpot < 20f && !MosqitController.playerDead && !MosqitController.isInRagdoll)
             {
                 suckButton.gameObject.SetActive(true);
             }
@@ -42,7 +48,13 @@ public class Bloodspot : MonoBehaviour
 
         if (Bloodsuck.IsSucking)
         {
+            playerCol.enabled = false;
             suckButton.gameObject.SetActive(false);
+            bloodFrame.gameObject.SetActive(true);
+            bloodFill.gameObject.SetActive(true);
+
+            StartCoroutine("FillBlood");
+
         }
     }
 
@@ -51,7 +63,17 @@ public class Bloodspot : MonoBehaviour
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
+            playerCol = GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>();
             playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
+    }
+
+    IEnumerator FillBlood()
+    {
+        yield return new WaitForSeconds(2.5f);
+        if (bloodFill.fillAmount < 1f)
+        {
+            bloodFill.fillAmount += 0.03f * Time.deltaTime;
         }
     }
 
