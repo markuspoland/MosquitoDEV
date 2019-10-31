@@ -11,18 +11,30 @@ public class Bloodspot : MonoBehaviour
     Transform player;
     Animator playerAnim;
     CapsuleCollider playerCol;
+    bool first;
+    float timer;
+
+    public GameObject[] Swipes;
 
     public Image bloodFrame;
     public Image bloodFill;
+
+    public Image[] gameUI;
     // Start is called before the first frame update
     void Start()
     {
+        timer = 3f;
         suckButton = GameObject.FindGameObjectWithTag("SuckButton").GetComponent<Button>();
         suckButton.onClick.AddListener(Bloodsuck.Suck);
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
         InvokeRepeating("GetPlayer", 0f, 5f);
+        first = false;
+        foreach (GameObject swipeObject in Swipes)
+        {
+            swipeObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -52,7 +64,8 @@ public class Bloodspot : MonoBehaviour
             suckButton.gameObject.SetActive(false);
             bloodFrame.gameObject.SetActive(true);
             bloodFill.gameObject.SetActive(true);
-
+            EnableSwipe();
+            
             StartCoroutine("FillBlood");
 
         }
@@ -70,11 +83,36 @@ public class Bloodspot : MonoBehaviour
 
     IEnumerator FillBlood()
     {
+        foreach (Image img in gameUI)
+        {
+            img.gameObject.SetActive(false);
+        }
+
         yield return new WaitForSeconds(2.5f);
+        
         if (bloodFill.fillAmount < 1f)
         {
+            
             bloodFill.fillAmount += 0.03f * Time.deltaTime;
         }
     }
 
+    void EnableSwipe()
+    {
+
+            timer -= Time.deltaTime;
+
+
+        if (timer <= 0)
+        {
+            int randomSwipe = Random.Range(0, 2);
+            Swipes[randomSwipe].SetActive(true);
+            timer = 3f;
+        }
+
+        
+
+    }
+
+    
 }
