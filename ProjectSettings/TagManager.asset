@@ -27,6 +27,8 @@ TagManager:
   - SuckButton
   - BloodSpot1
   - vcam3
+  - Left
+  - Right
   layers:
   - Default
   - TransparentFX
