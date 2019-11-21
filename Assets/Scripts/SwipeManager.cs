@@ -56,10 +56,12 @@ public class SwipeManager : MonoBehaviour
                         if (currentSwipe.x < 0)
                         {
                             Debug.Log("right");
+                            swipeDirection = Swipe.Right;
                         }
                         else
                         {
                             Debug.Log("left");
+                            swipeDirection = Swipe.Left;
                         }
                     }
                     else

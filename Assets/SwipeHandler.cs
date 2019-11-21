@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SwipeHandler : MonoBehaviour
 {
@@ -12,15 +13,20 @@ public class SwipeHandler : MonoBehaviour
     public Animator successAnim;
     public Animator failureAnim;
     public AudioSource audioSource;
+
+    int checker;
     // Start is called before the first frame update
      void Awake()
     {
-     
+        checker = 0;
     }
 
     void OnEnable()
     {
-        Invoke("DisableMe", 1.5f);
+
+        EventManager.StartListening("SwipeFailure", SwipeFailure);
+        EventManager.StartListening("SwipeSuccess", SwipeSuccess);
+        Invoke("DisableMe", 1.2f);
         
     }
 
@@ -30,44 +36,72 @@ public class SwipeHandler : MonoBehaviour
         if (gameObject.CompareTag("Left"))
         {
             print("I am " + gameObject.tag);
-            if (SwipeManager.swipeDirection == SwipeManager.Swipe.Left)
+            
+            if (SwipeInput.swipedLeft && checker == 0)
             {
-                audioSource.PlayOneShot(success);
-                successAnim.SetTrigger("success");
-
-            } else if (SwipeManager.swipeDirection == SwipeManager.Swipe.Right)
+                checker = 1;
+                EventManager.TriggerEvent("SwipeSuccess");
+                
+            } else if (SwipeInput.swipedRight && checker == 0)
             {
-                audioSource.PlayOneShot(failure);
-                failureAnim.SetTrigger("fail");
+                checker = 1;
+                EventManager.TriggerEvent("SwipeFailure");
             }
         }
 
         if (gameObject.CompareTag("Right"))
         {
             print("I am " + gameObject.tag);
-            if (SwipeManager.swipeDirection == SwipeManager.Swipe.Right)
+            if (SwipeInput.swipedRight && checker == 0)
             {
-                successAnim.SetTrigger("success");
-                audioSource.PlayOneShot(success);
+                checker = 1;
+                EventManager.TriggerEvent("SwipeSuccess");
             }
-            else if (SwipeManager.swipeDirection == SwipeManager.Swipe.Left)
+            else if (SwipeInput.swipedLeft && checker == 0)
             {
-                audioSource.PlayOneShot(failure);
-                failureAnim.SetTrigger("fail");
+                checker = 1;
+                EventManager.TriggerEvent("SwipeFailure");
             }
         }
     }
 
     void OnDisable()
     {
-        audioSource.PlayOneShot(failure);
+                
+        EventManager.StopListening("SwipeSuccess", SwipeSuccess);
+        EventManager.StopListening("SwipeFailure", SwipeFailure);
         
-        print("FAILURE!!!!!");
     }
 
     void DisableMe()
     {
-        
+        if (checker == 0)
+        {
+            EventManager.TriggerEvent("SwipeFailure");
+            
+        }
+        checker = 0;
         gameObject.SetActive(false);
     }
+
+    void SwipeSuccess()
+    {
+        successAnim.SetTrigger("success");
+        LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager.swipeSuccess);
+        
+    }
+
+    void SwipeFailure()
+    {
+        Debug.Log("I Failed");
+        failureAnim.SetTrigger("fail");
+        LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager.swipeFailure);
+
+    }
+
+    //IEnumerator Failure()
+    //{
+    //    EventManager.TriggerEvent("SwipeFailure");
+    //    yield return new WaitForSeconds(0.5f);
+    //}
 }
