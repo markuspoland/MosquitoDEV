@@ -11,6 +11,7 @@ public class Bloodsuck : MonoBehaviour
     Transform bloodSpot3;
     
     Collider[] boyColliders;
+    CapsuleCollider capsuleCol;
     MosqitController playerController;
     static Animator anim;
     public static bool IsSucking;
@@ -24,6 +25,7 @@ public class Bloodsuck : MonoBehaviour
 
     void Start()
     {
+        capsuleCol = GetComponent<CapsuleCollider>();
         playerController = GetComponent<MosqitController>();
         anim = GetComponent<Animator>();           
         boyColliders = GameObject.FindGameObjectWithTag("Boy").GetComponentsInChildren<Collider>();
@@ -44,16 +46,19 @@ public class Bloodsuck : MonoBehaviour
             
             playerController.enabled = false;
 
-            transform.position = Vector3.Lerp(transform.position, bloodSpot1.position, 6f * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, bloodSpot1.rotation, Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, bloodSpot1.position) < 4f)
-            {
+            
+                //transform.position = Vector3.Lerp(transform.position, bloodSpot1.position, 6f * Time.deltaTime);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, bloodSpot1.rotation, Time.deltaTime);
+            
+            if (Vector3.Distance(transform.position, bloodSpot1.position) < 20f)
+            
+                capsuleCol.enabled = false;
                 transform.rotation = bloodSpot1.rotation;
                 transform.position = bloodSpot1.position;
                 StartCoroutine(SuckBlood());
-            }
             
+
         }
     }
 
