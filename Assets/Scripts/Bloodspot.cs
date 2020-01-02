@@ -9,10 +9,14 @@ public class Bloodspot : MonoBehaviour
     Button suckButton;
     float distanceFromBloodSpot;
     Transform player;
+    MosqitController playerController;
     Animator playerAnim;
+    [SerializeField] Animator boyAnim;
+    Collider[] boyColliders;
     CapsuleCollider playerCol;
     bool first;
     float timer;
+    Bloodsuck bloodsuck;
 
     public GameObject[] Swipes;
 
@@ -20,6 +24,8 @@ public class Bloodspot : MonoBehaviour
     public Image bloodFill;
 
     public Image[] gameUI;
+
+    public static bool swipeFailed;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +35,14 @@ public class Bloodspot : MonoBehaviour
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
+        boyColliders = GameObject.FindGameObjectWithTag("Boy").GetComponentsInChildren<Collider>();
         InvokeRepeating("GetPlayer", 0f, 5f);
         first = false;
         foreach (GameObject swipeObject in Swipes)
         {
             swipeObject.SetActive(false);
         }
+        swipeFailed = false;
     }
 
     // Update is called once per frame
@@ -68,14 +76,24 @@ public class Bloodspot : MonoBehaviour
             
             StartCoroutine("FillBlood");
 
+        } 
+
+        if (swipeFailed)
+        {
+            StopCoroutine("FillBlood");
+            boyAnim.SetTrigger("Kill");
+            StartCoroutine("EnablePlayer");
+            timer = 3f;          
         }
     }
+
 
     void GetPlayer()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
+            playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<MosqitController>();
             playerCol = GameObject.FindGameObjectWithTag("Player").GetComponent<CapsuleCollider>();
             playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         }
@@ -95,6 +113,36 @@ public class Bloodspot : MonoBehaviour
             
             bloodFill.fillAmount += 0.03f * Time.deltaTime;
         }
+    }
+
+    IEnumerator EnablePlayer()
+    {
+        yield return new WaitForSeconds(0.8f);
+        bloodsuck = GameObject.FindGameObjectWithTag("Player").GetComponent<Bloodsuck>();
+        
+        if (playerCol)
+        {
+            playerCol.enabled = true;
+        }
+        
+        playerController.enabled = true;
+
+        
+        foreach (GameObject swipeObject in Swipes)
+        {
+            swipeObject.SetActive(false);
+        }
+
+        swipeFailed = false;
+
+        foreach (Image img in gameUI)
+        {
+            img.gameObject.SetActive(true);
+        }
+
+        suckButton.gameObject.SetActive(false);
+        bloodFrame.gameObject.SetActive(false);
+        bloodFill.gameObject.SetActive(false);
     }
 
     void EnableSwipe()

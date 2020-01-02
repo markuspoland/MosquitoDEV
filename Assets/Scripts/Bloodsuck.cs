@@ -53,13 +53,12 @@ public class Bloodsuck : MonoBehaviour
             
             if (Vector3.Distance(transform.position, bloodSpot1.position) < 20f)
             
-                capsuleCol.enabled = false;
                 transform.rotation = bloodSpot1.rotation;
                 transform.position = bloodSpot1.position;
                 StartCoroutine(SuckBlood());
             
 
-        }
+        } 
     }
 
     public static void Suck()

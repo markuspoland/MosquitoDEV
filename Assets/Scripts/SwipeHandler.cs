@@ -96,6 +96,7 @@ public class SwipeHandler : MonoBehaviour
         Debug.Log("I Failed");
         failureAnim.SetTrigger("fail");
         LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager.swipeFailure);
+        Bloodspot.swipeFailed = true;
 
     }
 
