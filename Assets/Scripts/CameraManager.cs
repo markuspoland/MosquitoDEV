@@ -8,20 +8,23 @@ public class CameraManager : MonoBehaviour
     CinemachineVirtualCamera vcam1;
     CinemachineVirtualCamera vcam2;
     CinemachineVirtualCamera vcam3;
+    CinemachineVirtualCamera vcam4;
     Bloodsuck bloodSuck;
     
     Rigidbody playerRb;
 
     private void Awake()
     {
-        vcam1 = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
-        vcam2 = GameObject.Find("CM vcam2").GetComponent<CinemachineVirtualCamera>();
-        vcam3 = GameObject.Find("CM vcam3").GetComponent<CinemachineVirtualCamera>();
-        
+        vcam1 = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        vcam2 = GameObject.Find("RagdollCamera").GetComponent<CinemachineVirtualCamera>();
+        vcam3 = GameObject.Find("SuckingCamera").GetComponent<CinemachineVirtualCamera>();
+        vcam4 = GameObject.Find("BoyDeathCamera").GetComponent<CinemachineVirtualCamera>();
+
         SetPlayer();
 
         vcam2.enabled = false;
         vcam3.enabled = false;
+        vcam4.enabled = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -77,6 +80,7 @@ public class CameraManager : MonoBehaviour
                 Invoke("EnableSuckCamera1", 0f);
             }
         
+            
         
     }
 
@@ -118,6 +122,15 @@ public class CameraManager : MonoBehaviour
         vcam1.enabled = false;
         vcam2.enabled = false;
         vcam3.enabled = true;
+        vcam4.enabled = false;
+    }
+
+    void EnableBoyDeathCamera()
+    {
+        vcam1.enabled = false;
+        vcam2.enabled = false;
+        vcam3.enabled = false;
+        vcam4.enabled = true;
     }
 
     //void SetPlayer1()

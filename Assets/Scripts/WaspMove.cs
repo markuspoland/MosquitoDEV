@@ -117,7 +117,10 @@ public class WaspMove : MonoBehaviour
                 }
         }
 
-                
+                if (Bloodspot.boyIsDead)
+        {
+            CancelInvoke();
+        }
     }
 
     void MoveWasp()

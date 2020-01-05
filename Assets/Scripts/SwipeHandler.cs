@@ -63,6 +63,11 @@ public class SwipeHandler : MonoBehaviour
                 EventManager.TriggerEvent("SwipeFailure");
             }
         }
+
+        if (Bloodspot.boyIsDead)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnDisable()

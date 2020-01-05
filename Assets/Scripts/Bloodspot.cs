@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 public class Bloodspot : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Bloodspot : MonoBehaviour
     bool first;
     float timer;
     Bloodsuck bloodsuck;
+    public static bool boyIsDead;
 
     public GameObject[] Swipes;
 
@@ -24,6 +26,10 @@ public class Bloodspot : MonoBehaviour
     public Image bloodFill;
 
     public Image[] gameUI;
+    public Image[] playerLivesImage;
+
+    public CinemachineVirtualCamera suckingCamera;
+    public CinemachineVirtualCamera boyDeathCamera;
 
     public static bool swipeFailed;
     // Start is called before the first frame update
@@ -43,6 +49,12 @@ public class Bloodspot : MonoBehaviour
             swipeObject.SetActive(false);
         }
         swipeFailed = false;
+        boyIsDead = false;
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("BoyDeath", BoyDeath);
     }
 
     // Update is called once per frame
@@ -111,7 +123,11 @@ public class Bloodspot : MonoBehaviour
         if (bloodFill.fillAmount < 1f)
         {
             
-            bloodFill.fillAmount += 0.03f * Time.deltaTime;
+            bloodFill.fillAmount += 0.04f * Time.deltaTime;
+        } else if (bloodFill.fillAmount >= 1f)
+        {
+            EventManager.TriggerEvent("BoyDeath");
+            yield break;
         }
     }
 
@@ -158,9 +174,38 @@ public class Bloodspot : MonoBehaviour
             timer = 3f;
         }
 
-        
+       
 
     }
 
-    
+    void BoyDeath()
+    {
+
+        boyAnim.SetTrigger("Die");
+        Destroy(player.gameObject);
+        suckButton.gameObject.SetActive(false);
+        bloodFrame.gameObject.SetActive(false);
+        bloodFill.gameObject.SetActive(false);
+        foreach (Image img in gameUI)
+        {
+            img.gameObject.SetActive(false);
+        }
+        foreach (Image img in playerLivesImage)
+        {
+            img.gameObject.SetActive(false);
+        }
+
+        CancelInvoke();
+        boyIsDead = true;
+        suckingCamera.enabled = false;
+        boyDeathCamera.enabled = true;
+        gameObject.SetActive(false);
+
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("BoyDeath", BoyDeath);
+    }
+
 }

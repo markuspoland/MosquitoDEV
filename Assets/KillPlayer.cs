@@ -18,13 +18,14 @@ public class KillPlayer : MonoBehaviour
     {
         Bloodsuck.IsSucking = false;
         Debug.Log("KILL KILL KILL");
-                boyColliders = GetComponentsInChildren<Collider>();
+        bloodspot.enabled = false;
+        boyColliders = GetComponentsInChildren<Collider>();
         foreach (Collider col in boyColliders)
         {
             col.enabled = true;
         }
 
-        bloodspot.enabled = false;
+        
         
     }
 
