@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using RDG;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,7 +36,7 @@ public class SwipeHandler : MonoBehaviour
     {
         if (gameObject.CompareTag("Left"))
         {
-            print("I am " + gameObject.tag);
+            
             
             if (SwipeInput.swipedLeft && checker == 0)
             {
@@ -51,7 +52,7 @@ public class SwipeHandler : MonoBehaviour
 
         if (gameObject.CompareTag("Right"))
         {
-            print("I am " + gameObject.tag);
+            
             if (SwipeInput.swipedRight && checker == 0)
             {
                 checker = 1;
@@ -91,6 +92,7 @@ public class SwipeHandler : MonoBehaviour
 
     void SwipeSuccess()
     {
+        Vibration.Vibrate(40);
         successAnim.SetTrigger("success");
         LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager.swipeSuccess);
         
@@ -98,7 +100,7 @@ public class SwipeHandler : MonoBehaviour
 
     void SwipeFailure()
     {
-        Debug.Log("I Failed");
+        Vibration.Vibrate(100);       
         failureAnim.SetTrigger("fail");
         LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager.swipeFailure);
         Bloodspot.swipeFailed = true;

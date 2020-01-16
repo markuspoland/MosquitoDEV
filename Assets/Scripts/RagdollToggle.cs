@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using UnityEngine.UI;
+using RDG;
 
 public class RagdollToggle : MonoBehaviour
 {
@@ -165,6 +166,18 @@ public class RagdollToggle : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         rotationKeeper.PlayerRotationY = Quaternion.LookRotation(-transform.forward, transform.up).y * 126.72747f;
+        Vibration.Vibrate(40);
+        
+        if (collision.collider.gameObject.tag == "Godzilla")
+        {
+            Vibration.Vibrate(40);
+            LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+            if (levelManager)
+            {
+                levelManager.CompleteLevel1Objective("Defeat The King Of The Monsters");
+            }
+            return;
+        }
 
         if (collision.collider.gameObject.tag != "TheNet")
         {

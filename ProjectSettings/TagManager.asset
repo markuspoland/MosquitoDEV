@@ -29,6 +29,8 @@ TagManager:
   - vcam3
   - Left
   - Right
+  - Godzilla
+  - LevelManager
   layers:
   - Default
   - TransparentFX

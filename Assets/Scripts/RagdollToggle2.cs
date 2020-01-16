@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using RDG;
 
 public class RagdollToggle2 : MonoBehaviour
 {
@@ -158,6 +159,12 @@ public class RagdollToggle2 : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         rotationKeeper.PlayerRotationY = Quaternion.LookRotation(-transform.forward, transform.up).y * 126.72747f;
+        Vibration.Vibrate(40);
+
+        if (collision.collider.gameObject.tag == "Godzilla")
+        {
+            return;
+        }
 
         if (collision.collider.gameObject.tag != "TheNet")
         {

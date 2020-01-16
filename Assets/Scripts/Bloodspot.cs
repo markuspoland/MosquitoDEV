@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Cinemachine;
+using RDG;
 
 public class Bloodspot : MonoBehaviour
 {
@@ -135,6 +136,7 @@ public class Bloodspot : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         bloodsuck = GameObject.FindGameObjectWithTag("Player").GetComponent<Bloodsuck>();
+        Vibration.Vibrate(40);
         
         if (playerCol)
         {

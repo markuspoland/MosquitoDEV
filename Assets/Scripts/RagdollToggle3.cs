@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using RDG;
 
 public class RagdollToggle3 : MonoBehaviour
 {
@@ -127,7 +128,14 @@ public class RagdollToggle3 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-    
+
+        if (collision.collider.gameObject.tag == "Godzilla")
+        {
+            Vibration.Vibrate(40);
+            return;
+        }
+
+        Vibration.Vibrate(40);
         GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
         IsDead = true;
         RagdollEnabled();
