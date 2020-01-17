@@ -12,12 +12,13 @@ public class KillPlayer : MonoBehaviour
 
     void Start()
     {
+        
         InvokeRepeating("CheckBloodspot", 20f, 1.5f);
     }
     // Start is called before the first frame update
     public void Kill()
     {
-
+        
         Vibration.Vibrate(150);
         Bloodsuck.IsSucking = false;
         Debug.Log("KILL KILL KILL");
@@ -27,7 +28,7 @@ public class KillPlayer : MonoBehaviour
         {
             col.enabled = true;
         }
-                
+                        
     }
 
     void CheckBloodspot()

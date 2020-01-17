@@ -96,6 +96,7 @@ public class Bloodspot : MonoBehaviour
             StopCoroutine("FillBlood");
             boyAnim.SetTrigger("Kill");
             StartCoroutine("EnablePlayer");
+            
             timer = 3f;          
         }
     }
@@ -143,7 +144,7 @@ public class Bloodspot : MonoBehaviour
             playerCol.enabled = true;
         }
         
-        playerController.enabled = true;
+        //playerController.enabled = true;
 
         
         foreach (GameObject swipeObject in Swipes)
@@ -161,6 +162,7 @@ public class Bloodspot : MonoBehaviour
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
+        
     }
 
     void EnableSwipe()

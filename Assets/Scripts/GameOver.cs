@@ -46,6 +46,9 @@ public class GameOver : MonoBehaviour
             var tempColor = gameOverImage.color;
             tempColor.a += 0.2f * Time.deltaTime;
             gameOverImage.color = tempColor;
+
+            MosqitController mosqitController = GameObject.FindGameObjectWithTag("Player").GetComponent<MosqitController>();
+            mosqitController.DeadSound();
         }
     }
 

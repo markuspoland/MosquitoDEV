@@ -68,7 +68,6 @@ public class RagdollToggle3 : MonoBehaviour
     {
         if (IsDead)
         {
-            mosqitController.DeadSound();
             MosqitController.playerDead = true;
             GameOver.GameIsOver();
         }

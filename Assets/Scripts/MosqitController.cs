@@ -334,7 +334,7 @@ public class MosqitController : MonoBehaviour
 
     public void DeadSound()
     {
-        float pitchDown = 0.2f;
+        float pitchDown = 0.5f;
         if (mosquitoAudio.pitch != 0f)
         {
             mosquitoAudio.pitch -= pitchDown * Time.deltaTime;
@@ -347,9 +347,8 @@ public class MosqitController : MonoBehaviour
 
     IEnumerator ResetCollider()
     {
-        yield return new WaitForSeconds(0.5f);
         playerCol.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         playerCol.enabled = true;
     }
 
