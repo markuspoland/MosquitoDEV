@@ -23,8 +23,14 @@ public class DisableDino : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Player")
         {
-            Destroy(rb, 2f);
-            gameObject.tag = "Untagged";
+            Destroy(rb, 5f);
+            StartCoroutine(RemoveTag());
         }
+    }
+
+    IEnumerator RemoveTag()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObject.tag = "Untagged";
     }
 }

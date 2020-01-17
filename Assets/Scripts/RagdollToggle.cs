@@ -170,7 +170,7 @@ public class RagdollToggle : MonoBehaviour
         
         if (collision.collider.gameObject.tag == "Godzilla")
         {
-            Vibration.Vibrate(40);
+            
             LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
             if (levelManager)
             {
@@ -181,11 +181,13 @@ public class RagdollToggle : MonoBehaviour
 
         if (collision.collider.gameObject.tag != "TheNet")
         {
+            mosqitController.RevivePitch();
             Instantiate(bloodFx, transform.position, Quaternion.identity);
             RagdollEnabled();
             LevelManager.TakeLife(3);
         } else
         {
+            mosqitController.RevivePitch();
             isCaught = true;
             anim.SetBool("caught", isCaught);
             Instantiate(bloodFx, transform.position, Quaternion.identity);

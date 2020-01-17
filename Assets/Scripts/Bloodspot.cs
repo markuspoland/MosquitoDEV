@@ -134,9 +134,9 @@ public class Bloodspot : MonoBehaviour
 
     IEnumerator EnablePlayer()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.24f);
         bloodsuck = GameObject.FindGameObjectWithTag("Player").GetComponent<Bloodsuck>();
-        Vibration.Vibrate(40);
+        
         
         if (playerCol)
         {

@@ -68,6 +68,7 @@ public class RagdollToggle3 : MonoBehaviour
     {
         if (IsDead)
         {
+            mosqitController.DeadSound();
             MosqitController.playerDead = true;
             GameOver.GameIsOver();
         }
@@ -131,7 +132,12 @@ public class RagdollToggle3 : MonoBehaviour
 
         if (collision.collider.gameObject.tag == "Godzilla")
         {
-            Vibration.Vibrate(40);
+
+            LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+            if (levelManager)
+            {
+                levelManager.CompleteLevel1Objective("Defeat The King Of The Monsters");
+            }
             return;
         }
 

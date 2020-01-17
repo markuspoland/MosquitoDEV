@@ -16,9 +16,12 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI objectiveNotificationText;
     public List<Image> livesImage;
     static Animator livesAnim;
+    AudioSource audioSource;
+    [SerializeField] AudioClip objectiveSound;
     // Start is called before the first frame update
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         objectiveNotificationText.text = null;
         objectiveNotification.SetActive(false);
         lives = livesImage;
@@ -47,6 +50,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (obj.Equals(objective))
                 {
+                    audioSource.PlayOneShot(objectiveSound);
                     objectiveNotificationText.text = obj;
                     int index = GetObjectiveName(obj, level1Objectives);
                     level1Objectives.RemoveAt(index);

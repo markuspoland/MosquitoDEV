@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RDG;
 
 public class KillPlayer : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class KillPlayer : MonoBehaviour
     // Start is called before the first frame update
     public void Kill()
     {
+
+        Vibration.Vibrate(150);
         Bloodsuck.IsSucking = false;
         Debug.Log("KILL KILL KILL");
         bloodspot.enabled = false;
@@ -24,9 +27,7 @@ public class KillPlayer : MonoBehaviour
         {
             col.enabled = true;
         }
-
-        
-        
+                
     }
 
     void CheckBloodspot()

@@ -327,5 +327,37 @@ public class MosqitController : MonoBehaviour
         }
     }
 
+    public void RevivePitch()
+    {
+        mosquitoAudio.pitch += 0.65f;
+    }
 
+    public void DeadSound()
+    {
+        float pitchDown = 0.2f;
+        if (mosquitoAudio.pitch != 0f)
+        {
+            mosquitoAudio.pitch -= pitchDown * Time.deltaTime;
+            if (mosquitoAudio.pitch <= 0f)
+            {
+                mosquitoAudio.enabled = false;
+            }
+        }
+    }
+
+    IEnumerator ResetCollider()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerCol.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        playerCol.enabled = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.tag == "Godzilla")
+        {
+            StartCoroutine(ResetCollider());
+        }
+    }
 } 

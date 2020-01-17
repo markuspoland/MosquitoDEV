@@ -163,17 +163,25 @@ public class RagdollToggle2 : MonoBehaviour
 
         if (collision.collider.gameObject.tag == "Godzilla")
         {
+
+            LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+            if (levelManager)
+            {
+                levelManager.CompleteLevel1Objective("Defeat The King Of The Monsters");
+            }
             return;
         }
 
         if (collision.collider.gameObject.tag != "TheNet")
         {
+            mosqitController.RevivePitch();
             GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             RagdollEnabled();
             LevelManager.TakeLife(1);
         }
         else
         {
+            mosqitController.RevivePitch();
             isCaught = true;
             anim.SetBool("caught", isCaught);
             GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;

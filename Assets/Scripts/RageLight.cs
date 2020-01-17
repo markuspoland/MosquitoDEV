@@ -83,7 +83,7 @@ public class RageLight : MonoBehaviour
         if (currentRageImage != null && currentRageImage.fillAmount >= 1f)
         {
             rageIconAnim.SetBool("InLight", false);
-            gameObject.SetActive(false);
+            gameObject.GetComponent<RageLight>().enabled = false;
         }
 
         if (currentRageImage != null)
