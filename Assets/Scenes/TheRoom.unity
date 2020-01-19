@@ -2008,7 +2008,7 @@ GameObject:
   - component: {fileID: 196574885}
   m_Layer: 0
   m_Name: Coin (17)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2027,6 +2027,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &196574881
 CapsuleCollider:
@@ -2398,7 +2402,7 @@ GameObject:
   - component: {fileID: 211398924}
   m_Layer: 0
   m_Name: Coin (5)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2417,6 +2421,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &211398920
 CapsuleCollider:
@@ -3515,7 +3523,7 @@ GameObject:
   - component: {fileID: 305050548}
   m_Layer: 0
   m_Name: ExtraCoin (14)
-  m_TagString: Untagged
+  m_TagString: ExtraCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3534,6 +3542,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 2dce4adc4bec466448216937cc802bd3, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: 16e3263cc8547bd41a89821a64d0c399,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &305050544
 CapsuleCollider:
@@ -3974,7 +3986,7 @@ GameObject:
   - component: {fileID: 321730327}
   m_Layer: 0
   m_Name: Coin (1)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4066,6 +4078,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!82 &321730327
 AudioSource:
@@ -4723,7 +4739,7 @@ GameObject:
   - component: {fileID: 402272027}
   m_Layer: 0
   m_Name: Coin (10)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4742,6 +4758,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &402272023
 CapsuleCollider:
@@ -6155,7 +6175,7 @@ GameObject:
   - component: {fileID: 574884440}
   m_Layer: 0
   m_Name: Coin (25)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6174,6 +6194,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &574884436
 CapsuleCollider:
@@ -6434,7 +6458,7 @@ GameObject:
   - component: {fileID: 586169862}
   m_Layer: 0
   m_Name: Coin (6)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6453,6 +6477,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &586169858
 CapsuleCollider:
@@ -6857,7 +6885,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 858421188}
   m_Follow: {fileID: 858421188}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 70
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 600
@@ -6880,7 +6908,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604869708}
-  m_LocalRotation: {x: 0.08803646, y: 0.701605, z: -0.08803646, w: 0.701605}
+  m_LocalRotation: {x: 0.088036455, y: 0.701605, z: -0.088036455, w: 0.701605}
   m_LocalPosition: {x: -80.340004, y: 99.12, z: 62.75765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7130,7 +7158,7 @@ GameObject:
   - component: {fileID: 651379077}
   m_Layer: 0
   m_Name: Coin (2)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7222,6 +7250,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!82 &651379077
 AudioSource:
@@ -8457,7 +8489,7 @@ GameObject:
   - component: {fileID: 784791509}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8476,6 +8508,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &784791505
 CapsuleCollider:
@@ -8662,7 +8698,7 @@ GameObject:
   - component: {fileID: 793241913}
   m_Layer: 0
   m_Name: Coin (20)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8681,6 +8717,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &793241909
 CapsuleCollider:
@@ -9990,7 +10030,7 @@ GameObject:
   - component: {fileID: 933423211}
   m_Layer: 0
   m_Name: Coin (18)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10009,6 +10049,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &933423207
 CapsuleCollider:
@@ -10596,7 +10640,7 @@ GameObject:
   - component: {fileID: 998471840}
   m_Layer: 0
   m_Name: Coin (15)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10615,6 +10659,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &998471836
 CapsuleCollider:
@@ -10821,7 +10869,7 @@ GameObject:
   - component: {fileID: 1011912444}
   m_Layer: 0
   m_Name: ExtraCoin (13)
-  m_TagString: Untagged
+  m_TagString: ExtraCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10840,6 +10888,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 2dce4adc4bec466448216937cc802bd3, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: 16e3263cc8547bd41a89821a64d0c399,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1011912440
 CapsuleCollider:
@@ -11331,7 +11383,7 @@ GameObject:
   - component: {fileID: 1048467007}
   m_Layer: 0
   m_Name: Coin (8)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11350,6 +11402,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1048467003
 CapsuleCollider:
@@ -11814,7 +11870,7 @@ GameObject:
   - component: {fileID: 1076157744}
   m_Layer: 0
   m_Name: Coin (21)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11833,6 +11889,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1076157740
 CapsuleCollider:
@@ -12134,7 +12194,7 @@ GameObject:
   - component: {fileID: 1141283199}
   m_Layer: 0
   m_Name: Coin (7)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12153,6 +12213,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1141283195
 CapsuleCollider:
@@ -12365,7 +12429,7 @@ GameObject:
   - component: {fileID: 1175651137}
   m_Layer: 0
   m_Name: Coin (3)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12384,6 +12448,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1175651133
 CapsuleCollider:
@@ -13644,7 +13712,7 @@ GameObject:
   - component: {fileID: 1281331858}
   m_Layer: 0
   m_Name: Coin (12)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13663,6 +13731,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1281331854
 CapsuleCollider:
@@ -14556,7 +14628,7 @@ GameObject:
   - component: {fileID: 1396885514}
   m_Layer: 0
   m_Name: Coin (11)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14575,6 +14647,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1396885510
 CapsuleCollider:
@@ -15120,7 +15196,7 @@ GameObject:
   - component: {fileID: 1459620115}
   m_Layer: 0
   m_Name: Coin (9)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15139,6 +15215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1459620111
 CapsuleCollider:
@@ -15718,7 +15798,7 @@ GameObject:
   - component: {fileID: 1513053151}
   m_Layer: 0
   m_Name: Coin (4)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15737,6 +15817,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1513053147
 CapsuleCollider:
@@ -16703,7 +16787,7 @@ GameObject:
   - component: {fileID: 1635562077}
   m_Layer: 0
   m_Name: ExtraCoin (19)
-  m_TagString: Untagged
+  m_TagString: ExtraCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16722,6 +16806,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 2dce4adc4bec466448216937cc802bd3, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: 16e3263cc8547bd41a89821a64d0c399,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1635562073
 CapsuleCollider:
@@ -17558,7 +17646,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 600
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -17583,7 +17671,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.08803646, y: 0.701605, z: -0.08803646, w: 0.701605}
+  m_LocalRotation: {x: 0.088036455, y: 0.701605, z: -0.088036455, w: 0.701605}
   m_LocalPosition: {x: -80.340004, y: 99.12, z: 62.75765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17903,7 +17991,7 @@ GameObject:
   - component: {fileID: 1720670544}
   m_Layer: 0
   m_Name: Coin (22)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17922,6 +18010,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1720670540
 CapsuleCollider:
@@ -18411,7 +18503,7 @@ GameObject:
   - component: {fileID: 1754756619}
   m_Layer: 0
   m_Name: Coin (16)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18430,6 +18522,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1754756615
 CapsuleCollider:
@@ -19588,7 +19684,7 @@ GameObject:
   - component: {fileID: 1981367275}
   m_Layer: 0
   m_Name: Coin (24)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19607,6 +19703,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &1981367271
 CapsuleCollider:
@@ -20502,7 +20602,7 @@ GameObject:
   - component: {fileID: 2101977804}
   m_Layer: 0
   m_Name: Coin (23)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20521,6 +20621,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinSound: {fileID: 8300000, guid: 3689987605566fc4188fbca97b081161, type: 3}
   coinParticle: {fileID: 6464529393130321777, guid: d9f250d60d217d5498f1d9ce247d5b3f,
+    type: 3}
+  coinPoints: {fileID: 6933756649577462835, guid: 144c4a58c41da00409da797d48daf4a0,
+    type: 3}
+  extraCoinPoints: {fileID: 6933756649577462835, guid: ec5c9ec5bfcdf2e4ca27275ec5336911,
     type: 3}
 --- !u!136 &2101977800
 CapsuleCollider:

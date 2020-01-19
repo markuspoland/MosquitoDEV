@@ -12,7 +12,7 @@ public class WaspMove : MonoBehaviour
     Transform player;
     Animator anim;
     float speed = 65f;
-    float pursueSpeed = 48f;
+    float pursueSpeed = 50f;
     float rotSpeed = 10f;
     float distanceFromPlayer;
     float pursueDistance = 100f;

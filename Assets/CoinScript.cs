@@ -10,6 +10,8 @@ public class CoinScript : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip coinSound;
     [SerializeField] ParticleSystem coinParticle;
+    [SerializeField] GameObject coinPoints;
+    [SerializeField] GameObject extraCoinPoints;
     float rotateSpeed = 10f;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,14 @@ public class CoinScript : MonoBehaviour
         {
             Vibration.Vibrate(40);
             Instantiate(coinParticle, transform.position, Quaternion.identity);
+            if (gameObject.tag == "Coin") {
+                Instantiate(coinPoints, transform.position, Quaternion.identity);
+            } else
+            {
+                Instantiate(extraCoinPoints, transform.position, Quaternion.identity);
+            }
+            
+            
             audioSource.PlayOneShot(coinSound);
             meshRenderer.enabled = false;
             collider.enabled = false;

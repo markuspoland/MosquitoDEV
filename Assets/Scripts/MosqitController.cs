@@ -348,7 +348,7 @@ public class MosqitController : MonoBehaviour
     IEnumerator ResetCollider()
     {
         playerCol.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         playerCol.enabled = true;
     }
 
