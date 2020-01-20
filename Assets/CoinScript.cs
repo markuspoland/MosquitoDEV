@@ -8,6 +8,7 @@ public class CoinScript : MonoBehaviour
     MeshRenderer meshRenderer;
     Collider collider;
     AudioSource audioSource;
+    [SerializeField] BonusCounter bonusCounter;
     [SerializeField] AudioClip coinSound;
     [SerializeField] ParticleSystem coinParticle;
     [SerializeField] GameObject coinPoints;
@@ -19,6 +20,7 @@ public class CoinScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
         collider = GetComponent<Collider>();
+        
     }
 
     // Update is called once per frame
@@ -35,9 +37,11 @@ public class CoinScript : MonoBehaviour
             Instantiate(coinParticle, transform.position, Quaternion.identity);
             if (gameObject.tag == "Coin") {
                 Instantiate(coinPoints, transform.position, Quaternion.identity);
+                bonusCounter.UpdateBonusScore(10);
             } else
             {
                 Instantiate(extraCoinPoints, transform.position, Quaternion.identity);
+                bonusCounter.UpdateBonusScore(20);
             }
             
             
