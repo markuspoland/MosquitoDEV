@@ -38,10 +38,12 @@ public class CoinScript : MonoBehaviour
             if (gameObject.tag == "Coin") {
                 Instantiate(coinPoints, transform.position, Quaternion.identity);
                 bonusCounter.UpdateBonusScore(10);
+                GameManager.Instance.levelCoinPoints += 10;
             } else
             {
                 Instantiate(extraCoinPoints, transform.position, Quaternion.identity);
                 bonusCounter.UpdateBonusScore(20);
+                GameManager.Instance.levelCoinPoints += 20;
             }
             
             

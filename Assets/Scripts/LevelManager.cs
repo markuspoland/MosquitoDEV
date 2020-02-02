@@ -18,6 +18,10 @@ public class LevelManager : MonoBehaviour
     static Animator livesAnim;
     AudioSource audioSource;
     [SerializeField] AudioClip objectiveSound;
+    [SerializeField] GameObject levelComplete;
+    [SerializeField] GameObject BonusStat;
+    [SerializeField] GameObject ObjectiveStat;
+    [SerializeField] GameObject ReviveStat;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,6 +29,18 @@ public class LevelManager : MonoBehaviour
         objectiveNotificationText.text = null;
         objectiveNotification.SetActive(false);
         lives = livesImage;
+
+        levelComplete.SetActive(false);
+        BonusStat.SetActive(false);
+        ObjectiveStat.SetActive(false);
+        ReviveStat.SetActive(false);
+    }
+
+    void Start()
+    {
+        GameManager.Instance.levelCoinPoints = 0;
+        GameManager.Instance.levelRevivesCount = 0;
+        GameManager.Instance.ObjectivesCompleted = 0;
     }
 
     // Update is called once per frame
@@ -55,6 +71,7 @@ public class LevelManager : MonoBehaviour
                     int index = GetObjectiveName(obj, level1Objectives);
                     level1Objectives.RemoveAt(index);
                     StartCoroutine(DisableObjectiveNotification());
+                    GameManager.Instance.ObjectivesCompleted++;
                 }
             }
         } else
@@ -74,5 +91,21 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         objectiveNotification.SetActive(false);
+    }
+
+    public void ShowLevelStats()
+    {
+        StartCoroutine(ShowStats());
+    }
+
+    IEnumerator ShowStats()
+    {
+        levelComplete.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        BonusStat.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        ObjectiveStat.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        ReviveStat.SetActive(true);
     }
 }
