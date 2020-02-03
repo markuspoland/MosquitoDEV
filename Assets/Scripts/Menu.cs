@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+    [SerializeField] GameObject loadingScreen;
+
     void Start()
     {
-        
+        loadingScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
+        loadingScreen.SetActive(true);
         GameManager.Instance.ChangeScene(GameManager.GameScene.TheRoom);
     }
 }

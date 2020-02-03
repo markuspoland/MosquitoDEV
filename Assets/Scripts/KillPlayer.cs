@@ -9,6 +9,7 @@ public class KillPlayer : MonoBehaviour
     CapsuleCollider playerCol;
     Collider[] boyColliders;
     public Bloodspot bloodspot;
+    
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class KillPlayer : MonoBehaviour
 
     public void EnableStats()
     {
+                
         LevelManager levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         levelManager.ShowLevelStats();
     }

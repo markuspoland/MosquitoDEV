@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     public float levelTime;
     public int levelRevivesCount;
     public int ObjectivesCompleted;
+    public string levelTimerText;
 
     void Awake()
     {

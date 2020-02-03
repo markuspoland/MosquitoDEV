@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     TextMeshProUGUI timerText;
     float minutes, seconds;
+    float endMinutes, endSeconds;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,15 @@ public class Timer : MonoBehaviour
     {
         seconds = (int)(Time.time % 60f);
         minutes = (int)(Time.time / 60f);
+        GameManager.Instance.levelTime += seconds;
         timerText.SetText(minutes.ToString("00") + " : " + seconds.ToString("00"));  
+    }
+
+    public void SetLevelTime()
+    {
+        endSeconds = seconds;
+        endMinutes = minutes;
+        timerText.SetText(endMinutes.ToString("00") + " : " + endSeconds.ToString("00"));
+        GameManager.Instance.levelTimerText = endMinutes.ToString("00") + " : " + endSeconds.ToString("00");
     }
 }

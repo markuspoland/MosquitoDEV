@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class MosqitController : MonoBehaviour
@@ -34,8 +35,11 @@ public class MosqitController : MonoBehaviour
     float panDown = 0.05f;
 
     Button flipButton;
+    Button brakeButton;
     Button dashLeftButton;
     Button dashRightButton;
+
+    BrakeHandler brakeHandler;
                     
     protected Joystick flyHandle;
 
@@ -62,6 +66,7 @@ public class MosqitController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         flipButton = GameObject.FindGameObjectWithTag("Flip").GetComponent<Button>();
         flipButton.onClick.AddListener(Flip);
+        brakeButton = GameObject.FindGameObjectWithTag("Brake").GetComponent<Button>();
         dashSpeed = 200f;
         startDashTime = 0.2f;
         dashTime = startDashTime;
@@ -74,6 +79,7 @@ public class MosqitController : MonoBehaviour
         mosquitoAudio = GetComponent<AudioSource>();
         startPitch = mosquitoAudio.pitch;
         cooldown = 0f;
+        brakeHandler = FindObjectOfType<BrakeHandler>().GetComponent<BrakeHandler>();
         
     }
 
@@ -88,6 +94,15 @@ public class MosqitController : MonoBehaviour
         if (cooldown <= 0f)
         {
             cooldown = 0f;
+        }
+
+        
+        if (brakeHandler.BrakePressed())
+        {
+            movementForwardSpeed = 35f;
+        } else
+        {
+            movementForwardSpeed = 50f;
         }
     }
 
@@ -359,4 +374,6 @@ public class MosqitController : MonoBehaviour
             StartCoroutine(ResetCollider());
         }
     }
+
+    
 } 

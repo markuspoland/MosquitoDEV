@@ -28,6 +28,10 @@ public class Bloodspot : MonoBehaviour
 
     public Image[] gameUI;
     public Image[] playerLivesImage;
+    public GameObject[] rageObjects;
+    public GameObject levelTimer;
+    public GameObject bonus;
+
 
     public CinemachineVirtualCamera suckingCamera;
     public CinemachineVirtualCamera boyDeathCamera;
@@ -187,13 +191,25 @@ public class Bloodspot : MonoBehaviour
 
         boyAnim.SetTrigger("Die");
         Destroy(player.gameObject);
+
+        levelTimer.GetComponent<Timer>().SetLevelTime();
+        levelTimer.SetActive(false);
+        bonus.SetActive(false);
+
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
+
         foreach (Image img in gameUI)
         {
             img.gameObject.SetActive(false);
         }
+
+        foreach (GameObject go in rageObjects)
+        {
+            go.SetActive(false);
+        }
+
         foreach (Image img in playerLivesImage)
         {
             img.gameObject.SetActive(false);

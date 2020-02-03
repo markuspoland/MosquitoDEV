@@ -33,6 +33,7 @@ TagManager:
   - LevelManager
   - Coin
   - ExtraCoin
+  - Brake
   layers:
   - Default
   - TransparentFX

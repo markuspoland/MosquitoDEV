@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject BonusStat;
     [SerializeField] GameObject ObjectiveStat;
     [SerializeField] GameObject ReviveStat;
+    [SerializeField] GameObject levelTimer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour
         BonusStat.SetActive(false);
         ObjectiveStat.SetActive(false);
         ReviveStat.SetActive(false);
+        levelTimer.SetActive(false);
     }
 
     void Start()
@@ -107,5 +109,7 @@ public class LevelManager : MonoBehaviour
         ObjectiveStat.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         ReviveStat.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        levelTimer.SetActive(true);
     }
 }
