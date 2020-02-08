@@ -99,7 +99,7 @@ public class MosqitController : MonoBehaviour
         
         if (brakeHandler.BrakePressed())
         {
-            movementForwardSpeed = 35f;
+            movementForwardSpeed = 30f;
         } else
         {
             movementForwardSpeed = 50f;
