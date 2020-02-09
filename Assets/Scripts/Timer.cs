@@ -6,7 +6,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     TextMeshProUGUI timerText;
-    float minutes, seconds;
+    float minutes, seconds = 0f;
     float endMinutes, endSeconds;
     // Start is called before the first frame update
     void Start()
@@ -18,8 +18,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        seconds = (int)(Time.time % 60f);
-        minutes = (int)(Time.time / 60f);
+        seconds = (int)(Time.timeSinceLevelLoad % 60f);
+        minutes = (int)(Time.timeSinceLevelLoad / 60f);
         GameManager.Instance.levelTime += seconds;
         timerText.SetText(minutes.ToString("00") + " : " + seconds.ToString("00"));  
     }

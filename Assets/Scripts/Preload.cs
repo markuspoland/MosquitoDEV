@@ -19,7 +19,7 @@ public class Preload : MonoBehaviour
 
         if (timer <= 0f)
         {
-            GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+            GameManager.Instance.ChangeScene(GameManager.GameScene.Intro);
         }
     }
 }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public enum GameScene
     {
         Preload,
+        Intro,
         Menu,
         TheRoom
     }
