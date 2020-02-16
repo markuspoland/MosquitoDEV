@@ -31,6 +31,7 @@ public class Bloodspot : MonoBehaviour
     public GameObject[] rageObjects;
     public GameObject levelTimer;
     public GameObject bonus;
+    public GameObject stamina;
 
 
     public CinemachineVirtualCamera suckingCamera;
@@ -195,6 +196,7 @@ public class Bloodspot : MonoBehaviour
         levelTimer.GetComponent<Timer>().SetLevelTime();
         levelTimer.SetActive(false);
         bonus.SetActive(false);
+        stamina.SetActive(false);
 
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);

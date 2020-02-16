@@ -12,8 +12,8 @@ public class GameOver : MonoBehaviour
     public static GameObject joystickVert;
     public static Image gameOverImage;
     Button restartButton;
-    public Image[] gameUI;
-    public static Image[] imageUI;
+    public GameObject[] gameUI;
+    public static GameObject[] imageUI;
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +38,9 @@ public class GameOver : MonoBehaviour
     {
         if (gameOverImage.color.a < 1f)
         {
-            foreach(Image img in imageUI)
+            foreach(GameObject img in imageUI)
             {
-                img.gameObject.SetActive(false);
+                img.SetActive(false);
             }
             joystickVert.SetActive(false);
             var tempColor = gameOverImage.color;

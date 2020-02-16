@@ -59,6 +59,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.83522516
+        functionName: SpillBlood
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c5baa52e547acbd4e986f52a73c15403,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.90965736
         functionName: EnableStats
         data: 

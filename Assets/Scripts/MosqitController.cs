@@ -101,39 +101,9 @@ public class MosqitController : MonoBehaviour
             cooldown = 0f;
         }
 
-        
-        if (brakeHandler.BrakePressed())
-        {
-            movementForwardSpeed = 30f;
-            rotateAmountByKeys = 7.5f;
-            if (stamina < 2f)
-            {
-                stamina += 1.0f * Time.deltaTime;
-            }
-        } else
-        {
-            movementForwardSpeed = 50f;
-            rotateAmountByKeys = 3.5f;
-        }
+        HandleBrakeAndAccelerate();
 
-        if (diveHandler.DivePressed() && stamina > 0f)
-        {
-            movementForwardSpeed = 100f;
-            stamina -= 1.0f * Time.deltaTime;
-        }
-        
-        if ((diveHandler.DivePressed() && stamina <= 0f) && !brakeHandler.BrakePressed())
-        {
-            stamina = 0f;
-            movementForwardSpeed = 50f;
-        } else if (!diveHandler.DivePressed() && stamina < 2f)
-        {
-            stamina += 0.2f * Time.deltaTime;
-        } else if ((!diveHandler.DivePressed() && stamina >= 2f) && !brakeHandler.BrakePressed())
-        {
-            stamina = 2f;
-            movementForwardSpeed = 50f;
-        }
+
 
         staminaSlider.value = stamina / 2;
         Debug.Log("Stamina: " + stamina);
@@ -237,6 +207,49 @@ public class MosqitController : MonoBehaviour
             upForce = Mathf.Lerp(upForce, 0f, 0.5f);
         }
 
+    }
+
+    void HandleBrakeAndAccelerate()
+    {
+        if (brakeHandler.BrakePressed())
+        {
+            movementForwardSpeed = 30f;
+            rotateAmountByKeys = 7.5f;
+            if (stamina < 2f)
+            {
+                stamina += 1.0f * Time.deltaTime;
+            }
+        }
+        else
+        {
+            movementForwardSpeed = 50f;
+            rotateAmountByKeys = 3.5f;
+        }
+
+        if (diveHandler.DivePressed() && stamina > 0f)
+        {
+            movementForwardSpeed = 100f;
+            stamina -= 1.0f * Time.deltaTime;
+            anim.SetBool("DivePressed", true);
+        }
+
+        if ((diveHandler.DivePressed() && stamina <= 0f) && !brakeHandler.BrakePressed())
+        {
+            stamina = 0f;
+            movementForwardSpeed = 50f;
+            anim.SetBool("DivePressed", false);
+        }
+        else if (!diveHandler.DivePressed() && stamina < 2f)
+        {
+            stamina += 0.2f * Time.deltaTime;
+        }
+        else if ((!diveHandler.DivePressed() && stamina >= 2f) && !brakeHandler.BrakePressed())
+        {
+            stamina = 2f;
+            movementForwardSpeed = 50f;
+        }
+
+        
     }
 
     public void Flip()

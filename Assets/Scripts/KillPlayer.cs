@@ -9,11 +9,12 @@ public class KillPlayer : MonoBehaviour
     CapsuleCollider playerCol;
     Collider[] boyColliders;
     public Bloodspot bloodspot;
+    public GameObject blood;
     
 
     void Start()
     {
-        
+        blood.SetActive(false);
         InvokeRepeating("CheckBloodspot", 20f, 1.5f);
     }
     // Start is called before the first frame update
@@ -45,5 +46,10 @@ public class KillPlayer : MonoBehaviour
                 
         LevelManager levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
         levelManager.ShowLevelStats();
+    }
+
+    public void SpillBlood()
+    {
+        blood.SetActive(true);
     }
 }
