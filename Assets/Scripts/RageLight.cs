@@ -45,10 +45,7 @@ public class RageLight : MonoBehaviour
         {
             enraged = true;
         }
-        Debug.Log("Rage1: " + rage.fillAmount);
-        Debug.Log("Rage2: " + rage1.fillAmount);
-        Debug.Log("Rage3: " + rage2.fillAmount);
-
+       
         if (isInLight)
         {
 

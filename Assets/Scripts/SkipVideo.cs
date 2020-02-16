@@ -14,14 +14,11 @@ public class SkipVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
-        {
-            GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
-        }
+    }
+
+    public void Skip()
+    {
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
     }
 }

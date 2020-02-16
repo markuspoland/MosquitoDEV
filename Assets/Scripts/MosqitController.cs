@@ -40,6 +40,10 @@ public class MosqitController : MonoBehaviour
     Button dashRightButton;
 
     BrakeHandler brakeHandler;
+    DiveHandler diveHandler;
+
+    Slider staminaSlider;
+    float stamina = 2f;
                     
     protected Joystick flyHandle;
 
@@ -80,7 +84,8 @@ public class MosqitController : MonoBehaviour
         startPitch = mosquitoAudio.pitch;
         cooldown = 0f;
         brakeHandler = FindObjectOfType<BrakeHandler>().GetComponent<BrakeHandler>();
-        
+        diveHandler = FindObjectOfType<DiveHandler>().GetComponent<DiveHandler>();
+        staminaSlider = GameObject.FindGameObjectWithTag("Stamina").GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -100,10 +105,38 @@ public class MosqitController : MonoBehaviour
         if (brakeHandler.BrakePressed())
         {
             movementForwardSpeed = 30f;
+            rotateAmountByKeys = 7.5f;
+            if (stamina < 2f)
+            {
+                stamina += 1.0f * Time.deltaTime;
+            }
         } else
         {
             movementForwardSpeed = 50f;
+            rotateAmountByKeys = 3.5f;
         }
+
+        if (diveHandler.DivePressed() && stamina > 0f)
+        {
+            movementForwardSpeed = 100f;
+            stamina -= 1.0f * Time.deltaTime;
+        }
+        
+        if ((diveHandler.DivePressed() && stamina <= 0f) && !brakeHandler.BrakePressed())
+        {
+            stamina = 0f;
+            movementForwardSpeed = 50f;
+        } else if (!diveHandler.DivePressed() && stamina < 2f)
+        {
+            stamina += 0.2f * Time.deltaTime;
+        } else if ((!diveHandler.DivePressed() && stamina >= 2f) && !brakeHandler.BrakePressed())
+        {
+            stamina = 2f;
+            movementForwardSpeed = 50f;
+        }
+
+        staminaSlider.value = stamina / 2;
+        Debug.Log("Stamina: " + stamina);
     }
 
     private void FixedUpdate()
