@@ -214,7 +214,7 @@ public class MosqitController : MonoBehaviour
         if (brakeHandler.BrakePressed())
         {
             movementForwardSpeed = 30f;
-            rotateAmountByKeys = 7.5f;
+            anim.SetBool("BrakePressed", true);
             if (stamina < 2f)
             {
                 stamina += 1.0f * Time.deltaTime;
@@ -223,7 +223,7 @@ public class MosqitController : MonoBehaviour
         else
         {
             movementForwardSpeed = 50f;
-            rotateAmountByKeys = 3.5f;
+            anim.SetBool("BrakePressed", false);
         }
 
         if (diveHandler.DivePressed() && stamina > 0f)
@@ -242,6 +242,7 @@ public class MosqitController : MonoBehaviour
         else if (!diveHandler.DivePressed() && stamina < 2f)
         {
             stamina += 0.2f * Time.deltaTime;
+            anim.SetBool("DivePressed", false);
         }
         else if ((!diveHandler.DivePressed() && stamina >= 2f) && !brakeHandler.BrakePressed())
         {
