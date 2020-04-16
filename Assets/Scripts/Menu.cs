@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
 
     IEnumerator LoadSceneAsync()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync("TheRoom");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("Intro");
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress);
