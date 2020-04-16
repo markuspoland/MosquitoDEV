@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject ObjectiveStat;
     [SerializeField] GameObject ReviveStat;
     [SerializeField] GameObject levelTimer;
+    [SerializeField] GameObject highscore;
+
+    string currentLevel;
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,6 +40,7 @@ public class LevelManager : MonoBehaviour
         ObjectiveStat.SetActive(false);
         ReviveStat.SetActive(false);
         levelTimer.SetActive(false);
+        highscore.SetActive(false);
     }
 
     void Start()
@@ -43,6 +48,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.levelCoinPoints = 0;
         GameManager.Instance.levelRevivesCount = 0;
         GameManager.Instance.ObjectivesCompleted = 0;
+        currentLevel = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -97,7 +103,17 @@ public class LevelManager : MonoBehaviour
 
     public void ShowLevelStats()
     {
+        switch (currentLevel)
+        {
+            case "TheRoom":
+                GameManager.Instance.level1Points += GameManager.Instance.levelCoinPoints;
+                break;
+                                   
+        }
+
+        GameManager.Instance.UpdateHighscore();
         StartCoroutine(ShowStats());
+        GameManager.Instance.SaveScore();
     }
 
     IEnumerator ShowStats()
@@ -111,5 +127,7 @@ public class LevelManager : MonoBehaviour
         ReviveStat.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         levelTimer.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        highscore.SetActive(true);
     }
 }

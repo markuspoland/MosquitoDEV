@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -45,6 +47,12 @@ public class GameManager : MonoBehaviour
     public int ObjectivesCompleted;
     public string levelTimerText;
 
+    public int level1Points;
+    public int level2Points;
+    public int level3Points;
+
+    public int highscore;
+
     void Awake()
     {
         if (_instance == null)
@@ -76,5 +84,38 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(gameScene.ToString());
     }
 
+    public void UpdateHighscore()
+    {
+        highscore = level1Points + level2Points + level3Points;
+    }
     
+    public void SaveScore()
+    {
+        string filePath = Application.persistentDataPath + "/mosscr.scr";
+        BinaryFormatter bf = new BinaryFormatter();
+        SaveData saveData = new SaveData();
+        saveData.score = highscore;
+        FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate);
+        bf.Serialize(fs, saveData);
+    }
+
+    public void LoadScore()
+    {
+        
+        string filePath = Application.persistentDataPath + "/mosscr.scr";
+        if (File.Exists(filePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream(filePath, FileMode.Open);
+            SaveData saveData = new SaveData();
+            saveData = bf.Deserialize(fs) as SaveData;
+            highscore = saveData.score;
+        }
+    }
+}
+
+[System.Serializable]
+public class SaveData
+{
+    public int score;
 }

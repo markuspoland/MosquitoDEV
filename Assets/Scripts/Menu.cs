@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,10 +10,13 @@ public class Menu : MonoBehaviour
     
     [SerializeField] GameObject loadingScreen;
     [SerializeField] Slider slider;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     void Start()
     {
         loadingScreen.SetActive(false);
+        GameManager.Instance.LoadScore();
+        scoreText.SetText(GameManager.Instance.highscore.ToString());
     }
 
     // Update is called once per frame

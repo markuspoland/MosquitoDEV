@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SkipVideo : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,11 +13,6 @@ public class SkipVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void Skip()
-    {
-        GameManager.Instance.ChangeScene(GameManager.GameScene.TheRoom);
+        
     }
 }
