@@ -22,9 +22,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject levelComplete;
     [SerializeField] GameObject BonusStat;
     [SerializeField] GameObject ObjectiveStat;
+    [SerializeField] GameObject objectivePoints;
     [SerializeField] GameObject ReviveStat;
+    [SerializeField] GameObject revivePoints;
     [SerializeField] GameObject levelTimer;
+    [SerializeField] GameObject timeBonus;
+    [SerializeField] GameObject levelScore;
     [SerializeField] GameObject highscore;
+    Timer timer;
 
     string currentLevel;
     // Start is called before the first frame update
@@ -38,16 +43,25 @@ public class LevelManager : MonoBehaviour
         levelComplete.SetActive(false);
         BonusStat.SetActive(false);
         ObjectiveStat.SetActive(false);
+        objectivePoints.SetActive(false);
         ReviveStat.SetActive(false);
+        revivePoints.SetActive(false);
         levelTimer.SetActive(false);
+        timeBonus.SetActive(false);
+        levelScore.SetActive(false);
         highscore.SetActive(false);
     }
 
     void Start()
     {
+        GameManager.Instance.LoadScore();
         GameManager.Instance.levelCoinPoints = 0;
         GameManager.Instance.levelRevivesCount = 0;
+        GameManager.Instance.reviveBonus = 80;
+        GameManager.Instance.timeBonus = 0;
         GameManager.Instance.ObjectivesCompleted = 0;
+        GameManager.Instance.objectivePoints = 0;
+        timer = FindObjectOfType<Timer>();
         currentLevel = SceneManager.GetActiveScene().name;
     }
 
@@ -80,6 +94,7 @@ public class LevelManager : MonoBehaviour
                     level1Objectives.RemoveAt(index);
                     StartCoroutine(DisableObjectiveNotification());
                     GameManager.Instance.ObjectivesCompleted++;
+                    GameManager.Instance.objectivePoints += 50;
                 }
             }
         } else
@@ -103,14 +118,16 @@ public class LevelManager : MonoBehaviour
 
     public void ShowLevelStats()
     {
+        timer.CalculateLevelBonus();
+
         switch (currentLevel)
         {
             case "TheRoom":
-                GameManager.Instance.level1Points += GameManager.Instance.levelCoinPoints;
+                GameManager.Instance.level1Points += GameManager.Instance.levelCoinPoints + GameManager.Instance.reviveBonus + GameManager.Instance.timeBonus + GameManager.Instance.objectivePoints;
                 break;
                                    
         }
-
+        
         GameManager.Instance.UpdateHighscore();
         StartCoroutine(ShowStats());
         GameManager.Instance.SaveScore();
@@ -124,10 +141,21 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         ObjectiveStat.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        objectivePoints.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         ReviveStat.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        revivePoints.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         levelTimer.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        timeBonus.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        levelScore.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         highscore.SetActive(true);
+               
+
+        
     }
 }

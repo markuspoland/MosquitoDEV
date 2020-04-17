@@ -33,6 +33,7 @@ public class CloneActivator2 : MonoBehaviour
         }
 
         GameManager.Instance.levelRevivesCount++;
+        GameManager.Instance.reviveBonus -= 20;
 
         anim = GetComponent<Animator>();
         anim.enabled = true;

@@ -176,6 +176,8 @@ public class RagdollToggle : MonoBehaviour
             {
                 levelManager.CompleteLevel1Objective("Defeat The King Of The Monsters");
             }
+            capsuleCollider.enabled = false;
+            capsuleCollider.enabled = true;
             return;
         }
 

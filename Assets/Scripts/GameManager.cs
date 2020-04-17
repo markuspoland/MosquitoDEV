@@ -43,14 +43,17 @@ public class GameManager : MonoBehaviour
 
     public int levelCoinPoints;
     public float levelTime;
+    public int timeBonus;
     public int levelRevivesCount;
+    public int reviveBonus;
     public int ObjectivesCompleted;
+    public int objectivePoints;
     public string levelTimerText;
 
     public int level1Points;
     public int level2Points;
     public int level3Points;
-
+    public int tempHighscore;
     public int highscore;
 
     void Awake()
@@ -86,7 +89,13 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHighscore()
     {
-        highscore = level1Points + level2Points + level3Points;
+        tempHighscore = level1Points + level2Points + level3Points;
+
+        if (tempHighscore > highscore)
+        {
+            highscore = tempHighscore;
+            tempHighscore = 0;
+        }
     }
     
     public void SaveScore()
