@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
         saveData.score = highscore;
         FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate);
         bf.Serialize(fs, saveData);
+        fs.Close();
     }
 
     public void LoadScore()
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
             FileStream fs = new FileStream(filePath, FileMode.Open);
             SaveData saveData = new SaveData();
             saveData = bf.Deserialize(fs) as SaveData;
+            fs.Close();
             highscore = saveData.score;
         }
     }
