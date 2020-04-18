@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     static Animator livesAnim;
     AudioSource audioSource;
     [SerializeField] AudioClip objectiveSound;
+    [SerializeField] AudioClip statSound;
+    [SerializeField] AudioClip scoreSound;
     [SerializeField] GameObject levelComplete;
     [SerializeField] GameObject BonusStat;
     [SerializeField] GameObject ObjectiveStat;
@@ -136,26 +138,36 @@ public class LevelManager : MonoBehaviour
     IEnumerator ShowStats()
     {
         levelComplete.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(1f);
         BonusStat.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         ObjectiveStat.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         objectivePoints.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         ReviveStat.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         revivePoints.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         levelTimer.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         timeBonus.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         levelScore.SetActive(true);
+        audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         highscore.SetActive(true);
-               
+        audioSource.PlayOneShot(scoreSound);
 
-        
+
+
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28113902, g: 0.3665062, b: 0.49889192, a: 1}
+  m_IndirectSpecularColor: {r: 0.28113917, g: 0.36650634, b: 0.49889266, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5988,6 +5988,8 @@ MonoBehaviour:
   - {fileID: 332450739}
   - {fileID: 326454072}
   objectiveSound: {fileID: 8300000, guid: ec69f415cc252a04bb7e8b953bb680af, type: 3}
+  statSound: {fileID: 8300000, guid: 997723d4578b2f344b16704d2092f2eb, type: 3}
+  scoreSound: {fileID: 8300000, guid: fc802de7a0c5b4c45a3dbcafde0b74ee, type: 3}
   levelComplete: {fileID: 1041340916}
   BonusStat: {fileID: 2061130241}
   ObjectiveStat: {fileID: 304891739}
@@ -8081,7 +8083,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604869708}
-  m_LocalRotation: {x: 0.088036455, y: 0.701605, z: -0.088036455, w: 0.701605}
+  m_LocalRotation: {x: 0.08803646, y: 0.701605, z: -0.08803646, w: 0.701605}
   m_LocalPosition: {x: -80.340004, y: 99.12, z: 62.75765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9306,6 +9308,7 @@ MonoBehaviour:
   levelTimer: {fileID: 2027211468}
   bonus: {fileID: 1707628185}
   stamina: {fileID: 1171696364}
+  musicSource: {fileID: 1585586724}
   suckingCamera: {fileID: 1418728904}
   boyDeathCamera: {fileID: 1012473672}
 --- !u!1 &696234150
@@ -12997,7 +13000,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012473671}
-  m_LocalRotation: {x: -0.019622443, y: -0.70881474, z: -0.019732926, w: 0.7048456}
+  m_LocalRotation: {x: -0.019622458, y: -0.70881474, z: -0.019732941, w: 0.7048456}
   m_LocalPosition: {x: 326.4, y: 11.4, z: -143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20200,6 +20203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585586725}
   - component: {fileID: 1585586724}
+  - component: {fileID: 1585586726}
   m_Layer: 0
   m_Name: LevelMusic
   m_TagString: Untagged
@@ -20317,6 +20321,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585586726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585586723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17cccd4e615e05e4c84840bb5b4881bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1595834077
 GameObject:
   m_ObjectHideFlags: 0
@@ -21812,7 +21828,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.088036455, y: 0.701605, z: -0.088036455, w: 0.701605}
+  m_LocalRotation: {x: 0.08803646, y: 0.701605, z: -0.08803646, w: 0.701605}
   m_LocalPosition: {x: -80.340004, y: 99.12, z: 62.75765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

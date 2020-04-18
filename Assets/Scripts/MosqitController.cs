@@ -214,6 +214,7 @@ public class MosqitController : MonoBehaviour
         if (brakeHandler.BrakePressed())
         {
             movementForwardSpeed = 30f;
+            mosquitoAudio.pitch = 0.75f;
             anim.SetBool("BrakePressed", true);
             if (stamina < 2f)
             {
@@ -223,12 +224,14 @@ public class MosqitController : MonoBehaviour
         else
         {
             movementForwardSpeed = 50f;
+            mosquitoAudio.pitch = 1f;
             anim.SetBool("BrakePressed", false);
         }
 
         if (diveHandler.DivePressed() && stamina > 0f)
         {
             movementForwardSpeed = 100f;
+            mosquitoAudio.pitch = 1.25f;
             stamina -= 1.0f * Time.deltaTime;
             anim.SetBool("DivePressed", true);
         }

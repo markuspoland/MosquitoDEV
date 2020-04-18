@@ -32,6 +32,7 @@ public class Bloodspot : MonoBehaviour
     public GameObject levelTimer;
     public GameObject bonus;
     public GameObject stamina;
+    public AudioSource musicSource;
 
 
     public CinemachineVirtualCamera suckingCamera;
@@ -91,19 +92,20 @@ public class Bloodspot : MonoBehaviour
             bloodFrame.gameObject.SetActive(true);
             bloodFill.gameObject.SetActive(true);
             EnableSwipe();
-            
+
             StartCoroutine("FillBlood");
 
-        } 
+        }
 
         if (swipeFailed)
         {
             StopCoroutine("FillBlood");
             boyAnim.SetTrigger("Kill");
             StartCoroutine("EnablePlayer");
-            
-            timer = 3f;          
+
+            timer = 3f;
         }
+
     }
 
 
@@ -126,12 +128,13 @@ public class Bloodspot : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2.5f);
-        
+
         if (bloodFill.fillAmount < 1f)
         {
-            
+
             bloodFill.fillAmount += 0.04f * Time.deltaTime;
-        } else if (bloodFill.fillAmount >= 1f)
+        }
+        else if (bloodFill.fillAmount >= 1f)
         {
             EventManager.TriggerEvent("BoyDeath");
             yield break;
@@ -142,16 +145,16 @@ public class Bloodspot : MonoBehaviour
     {
         yield return new WaitForSeconds(1.24f);
         bloodsuck = GameObject.FindGameObjectWithTag("Player").GetComponent<Bloodsuck>();
-        
-        
+
+
         if (playerCol)
         {
             playerCol.enabled = true;
         }
-        
+
         //playerController.enabled = true;
 
-        
+
         foreach (GameObject swipeObject in Swipes)
         {
             swipeObject.SetActive(false);
@@ -167,13 +170,13 @@ public class Bloodspot : MonoBehaviour
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
-        
+
     }
 
     void EnableSwipe()
     {
 
-            timer -= Time.deltaTime;
+        timer -= Time.deltaTime;
 
 
         if (timer <= 0)
@@ -183,7 +186,7 @@ public class Bloodspot : MonoBehaviour
             timer = 3f;
         }
 
-       
+
 
     }
 
@@ -191,6 +194,7 @@ public class Bloodspot : MonoBehaviour
     {
 
         boyAnim.SetTrigger("Die");
+
         Destroy(player.gameObject);
 
         levelTimer.GetComponent<Timer>().SetLevelTime();
