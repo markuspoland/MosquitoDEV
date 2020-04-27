@@ -167,8 +167,9 @@ public class RagdollToggle2 : MonoBehaviour
             LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
             if (levelManager)
             {
-                levelManager.CompleteLevel1Objective("Defeat The King Of The Monsters");
+                levelManager.CompleteLevel1Objective("Dino down");
             }
+            
             return;
         }
 
