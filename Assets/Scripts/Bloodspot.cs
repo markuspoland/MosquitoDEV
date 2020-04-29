@@ -20,6 +20,7 @@ public class Bloodspot : MonoBehaviour
     float timer;
     Bloodsuck bloodsuck;
     public static bool boyIsDead;
+    [SerializeField] GameObject arrow;
 
     public GameObject[] Swipes;
 
@@ -91,6 +92,7 @@ public class Bloodspot : MonoBehaviour
             suckButton.gameObject.SetActive(false);
             bloodFrame.gameObject.SetActive(true);
             bloodFill.gameObject.SetActive(true);
+            arrow.SetActive(false);
             EnableSwipe();
 
             StartCoroutine("FillBlood");
@@ -170,7 +172,7 @@ public class Bloodspot : MonoBehaviour
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
-
+        arrow.SetActive(true);
     }
 
     void EnableSwipe()
@@ -192,7 +194,7 @@ public class Bloodspot : MonoBehaviour
 
     void BoyDeath()
     {
-
+        arrow.SetActive(false);
         boyAnim.SetTrigger("Die");
 
         Destroy(player.gameObject);

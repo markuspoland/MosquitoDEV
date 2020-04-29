@@ -7,6 +7,7 @@ public class DisableDino : MonoBehaviour
 
     Rigidbody rb;
     Collider col;
+    [SerializeField] GameObject boom;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +21,21 @@ public class DisableDino : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.collider.gameObject.tag == "Player")
+        if (collision.tag == "Player")
         {
-            Destroy(rb, 5f);
-            StartCoroutine(RemoveTag());
+            GameObject explosion = Instantiate(boom, new Vector3(177.14f, -62.04f, 128.93f), Quaternion.identity) as GameObject;
+            Destroy(gameObject);
+            //StartCoroutine(RemoveTag());
         }
     }
 
-    IEnumerator RemoveTag()
-    {
-        col.enabled = false;
-        yield return new WaitForSeconds(2f);
-        col.enabled = true;
-        gameObject.tag = "Untagged";
-    }
+    //IEnumerator RemoveTag()
+    //{
+    //    col.enabled = false;
+    //    yield return new WaitForSeconds(2f);
+    //    col.enabled = true;
+    //    gameObject.tag = "Untagged";
+    //}
 }

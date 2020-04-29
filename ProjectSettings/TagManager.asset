@@ -35,6 +35,8 @@ TagManager:
   - ExtraCoin
   - Brake
   - Stamina
+  - CeilingRage
+  - CandleRage
   layers:
   - Default
   - TransparentFX

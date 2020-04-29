@@ -21,6 +21,11 @@ public class RageLight : MonoBehaviour
     public GameObject rageHighlight;
     public static bool enraged;
 
+    [SerializeField] GameObject arrow;
+    [SerializeField] GameObject arrow1;
+    [SerializeField] GameObject arrow2;
+    [SerializeField] GameObject arrow4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +34,7 @@ public class RageLight : MonoBehaviour
         rage = GameObject.FindGameObjectWithTag("Rage").GetComponent<Image>();
         rage1 = GameObject.FindGameObjectWithTag("Rage1").GetComponent<Image>();
         rage2 = GameObject.FindGameObjectWithTag("Rage2").GetComponent<Image>();
-        
+        arrow4.SetActive(false);
 
         isInLight = false;
         isInHitRange = false;
@@ -44,6 +49,7 @@ public class RageLight : MonoBehaviour
         if (rage.fillAmount >= 1f && rage1.fillAmount >= 1f && rage2.fillAmount >= 0.99f)
         {
             enraged = true;
+            arrow4.SetActive(true);
         }
        
         if (isInLight)
@@ -79,6 +85,22 @@ public class RageLight : MonoBehaviour
 
         if (currentRageImage != null && currentRageImage.fillAmount >= 1f)
         {
+
+            if (gameObject.tag == "CeilingRage")
+            {
+                arrow.SetActive(false);
+            }
+
+            if (gameObject.tag == "CandleRage")
+            {
+                arrow1.SetActive(false);
+            }
+
+            if (gameObject.tag == "DeskLight")
+            {
+                arrow2.SetActive(false);
+            }
+
             rageIconAnim.SetBool("InLight", false);
             gameObject.GetComponent<RageLight>().enabled = false;
         }
