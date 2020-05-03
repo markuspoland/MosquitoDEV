@@ -27,6 +27,12 @@ public class DisableDino : MonoBehaviour
         {
             GameObject explosion = Instantiate(boom, new Vector3(177.14f, -62.04f, 128.93f), Quaternion.identity) as GameObject;
             Destroy(gameObject);
+
+            LevelManager levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+            if (levelManager)
+            {
+                levelManager.CompleteLevel1Objective("Dino down");
+            }
             //StartCoroutine(RemoveTag());
         }
     }

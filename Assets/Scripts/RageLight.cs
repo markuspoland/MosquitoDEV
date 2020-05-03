@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RageLight : MonoBehaviour
 {
     float rageLevel = 0.23f;
-    float rageDrop = 0.04f;
+    float rageDrop = 0.12f;
     bool isInLight;
     bool isInHitRange;
     Image rage;
@@ -26,10 +26,17 @@ public class RageLight : MonoBehaviour
     [SerializeField] GameObject arrow2;
     [SerializeField] GameObject arrow4;
 
+    [SerializeField] GameObject rageEffect;
+    [SerializeField] AudioClip rageSound;
+    AudioSource audioSource;
+ 
 
     // Start is called before the first frame update
     void Start()
     {
+        rageEffect.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = rageSound;
         enraged = false;
         rage = GameObject.FindGameObjectWithTag("Rage").GetComponent<Image>();
         rage1 = GameObject.FindGameObjectWithTag("Rage1").GetComponent<Image>();
@@ -77,6 +84,7 @@ public class RageLight : MonoBehaviour
                 if (!MosqitController.isInRagdoll)
                 {
                     currentRageImage.fillAmount += rageLevel * Time.deltaTime;
+                    rageEffect.SetActive(true);
                     rageIconAnim.SetBool("InLight", true);
                 }
             }
@@ -85,6 +93,9 @@ public class RageLight : MonoBehaviour
 
         if (currentRageImage != null && currentRageImage.fillAmount >= 1f)
         {
+
+            rageEffect.SetActive(false);
+            
 
             if (gameObject.tag == "CeilingRage")
             {
@@ -109,8 +120,13 @@ public class RageLight : MonoBehaviour
         {
             if (!isInLight && (currentRageImage.fillAmount > 0f && currentRageImage.fillAmount < 1f))
             {
+                rageEffect.SetActive(false);
+                
                 currentRageImage.fillAmount -= rageDrop * Time.deltaTime;
                 rageIconAnim.SetBool("InLight", false);
+            } else if (!isInLight && (currentRageImage.fillAmount <= 0f))
+            {
+                currentRageImage = null;
             }
         }
 
@@ -122,6 +138,7 @@ public class RageLight : MonoBehaviour
         {
             isInLight = true;
         }
+                
 
     }
 
@@ -134,5 +151,7 @@ public class RageLight : MonoBehaviour
             atkNum = 0;
         }
     }
+
+    
 
 }
