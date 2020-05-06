@@ -11,9 +11,16 @@ public class Menu : MonoBehaviour
     [SerializeField] GameObject loadingScreen;
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] AudioSource musicSource;
+
+    AudioSource audioSource;
+    [SerializeField] AudioClip selectClip;
+
+    [SerializeField] Animator levelSelectAnimator;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         loadingScreen.SetActive(false);
         GameManager.Instance.LoadScore();
         scoreText.SetText(GameManager.Instance.highscore.ToString());
@@ -29,11 +36,31 @@ public class Menu : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         //GameManager.Instance.ChangeScene(GameManager.GameScene.TheRoom);
+        audioSource.PlayOneShot(selectClip);
+        StartCoroutine(FadeOut(musicSource, 0.2f));
         StartCoroutine("LoadSceneAsync");
+    }
+
+    public void ShowLevelSelect()
+    {
+        audioSource.PlayOneShot(selectClip);
+        levelSelectAnimator.SetTrigger("ShowLevelSelect");
+    }
+
+    public void HideLevelSelect()
+    {
+        audioSource.PlayOneShot(selectClip);
+        levelSelectAnimator.SetTrigger("HideLevelSelect");
+    }
+
+    public void Records()
+    {
+        audioSource.PlayOneShot(selectClip);
     }
 
     IEnumerator LoadSceneAsync()
     {
+        yield return new WaitForSeconds(0.5f);
         AsyncOperation operation = SceneManager.LoadSceneAsync("Intro");
         while (!operation.isDone)
         {
@@ -42,4 +69,20 @@ public class Menu : MonoBehaviour
             yield return null;
         }
     }
+
+    IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
 }

@@ -32,7 +32,7 @@ public class IntroMusicStart : MonoBehaviour
 
         if (videoTime >= videoPlayer.length + 0.5)
         {
-            GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+            GameManager.Instance.ChangeScene(GameManager.GameScene.TheRoom);
         }
 
     }
