@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject timeBonus;
     [SerializeField] GameObject levelScore;
     [SerializeField] GameObject highscore;
+    [SerializeField] GameObject menu;
+    [SerializeField] GameObject continueGame;
     Timer timer;
 
     string currentLevel;
@@ -52,6 +54,8 @@ public class LevelManager : MonoBehaviour
         timeBonus.SetActive(false);
         levelScore.SetActive(false);
         highscore.SetActive(false);
+        menu.SetActive(false);
+        continueGame.SetActive(false);
     }
 
     void Start()
@@ -165,9 +169,19 @@ public class LevelManager : MonoBehaviour
         audioSource.PlayOneShot(statSound);
         yield return new WaitForSeconds(0.5f);
         highscore.SetActive(true);
+        menu.SetActive(true);
+        continueGame.SetActive(true);
         audioSource.PlayOneShot(scoreSound);
 
+    }
 
+    public void BackToMenu()
+    {
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+    }
 
+    public void End()
+    {
+        GameManager.Instance.ChangeScene(GameManager.GameScene.End);
     }
 }

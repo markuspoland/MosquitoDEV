@@ -34,17 +34,16 @@ public class RagdollToggle : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
-        ragdollEnabled = false;
         isCaught = false;
-        deathcount = 5;
+        theNet = GameObject.FindGameObjectWithTag("TheNet").transform;
+        deathText = GameObject.FindGameObjectWithTag("DeathCount").GetComponent<TextMeshProUGUI>();
         deathText.gameObject.SetActive(false);
+        deathcount = 5f;
         rotationKeeper = FindObjectOfType<RotationKeeper>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        theNet = GameObject.FindGameObjectWithTag("TheNet").transform;
-                
+        rootTransform = GameObject.FindGameObjectWithTag("RootJoint").transform;
         mosqitController = GetComponent<MosqitController>();
 
         childrenCollider = GetComponentsInChildren<Collider>();
@@ -53,7 +52,7 @@ public class RagdollToggle : MonoBehaviour
         revival = GetComponent<Revive>();
 
         colliderCenter = capsuleCollider.center;
-        collided = false;    
+        collided = false;
     }
 
     void Start()
@@ -99,6 +98,7 @@ public class RagdollToggle : MonoBehaviour
         MosqitController.isInRagdoll = true;
         ragdollEnabled = true;
         deathText.gameObject.SetActive(true);
+
         foreach (var collider in childrenCollider)
         {
             collider.enabled = true;
@@ -108,7 +108,7 @@ public class RagdollToggle : MonoBehaviour
             rigidbody.detectCollisions = true;
             rigidbody.isKinematic = false;
             rigidbody.AddForce(transform.forward * 15f, ForceMode.Impulse);
-            
+
         }
 
         //rb.velocity = new Vector3 (transform.position.x, transform.position.y, 3f);
@@ -116,7 +116,7 @@ public class RagdollToggle : MonoBehaviour
         anim.enabled = false;
         rb.detectCollisions = false;
         rb.isKinematic = true;
-        Destroy(capsuleCollider);
+        //Destroy(capsuleCollider);
         mosqitController.enabled = false;
     }
 
@@ -183,21 +183,22 @@ public class RagdollToggle : MonoBehaviour
         if (collision.collider.gameObject.tag != "TheNet")
         {
             mosqitController.RevivePitch();
-            Instantiate(bloodFx, transform.position, Quaternion.identity);
+            GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             RagdollEnabled();
             LevelManager.TakeLife(3);
-        } else
+        }
+        else
         {
             mosqitController.RevivePitch();
             isCaught = true;
             anim.SetBool("caught", isCaught);
-            Instantiate(bloodFx, transform.position, Quaternion.identity);
+            GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             NetCaught();
             LevelManager.TakeLife(3);
         }
-        
-        
-        
+
+
+
     }
 
     void ChangePlayerState()

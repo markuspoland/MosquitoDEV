@@ -86,6 +86,9 @@ public class RageLight : MonoBehaviour
                     currentRageImage.fillAmount += rageLevel * Time.deltaTime;
                     rageEffect.SetActive(true);
                     rageIconAnim.SetBool("InLight", true);
+                } else
+                {
+                    rageEffect.SetActive(false);
                 }
             }
 

@@ -35,10 +35,9 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         loadingScreen.SetActive(true);
-        //GameManager.Instance.ChangeScene(GameManager.GameScene.TheRoom);
         audioSource.PlayOneShot(selectClip);
         StartCoroutine(FadeOut(musicSource, 0.2f));
-        StartCoroutine("LoadSceneAsync");
+        StartCoroutine(LoadSceneAsync("Intro"));
     }
 
     public void ShowLevelSelect()
@@ -58,10 +57,28 @@ public class Menu : MonoBehaviour
         audioSource.PlayOneShot(selectClip);
     }
 
-    IEnumerator LoadSceneAsync()
+    public void Leaderboard()
+    {
+        audioSource.PlayOneShot(selectClip);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void LoadLevel1()
+    {
+        audioSource.PlayOneShot(selectClip);
+        loadingScreen.SetActive(true);
+        StartCoroutine(LoadSceneAsync("TheRoom"));
+    }
+
+
+    IEnumerator LoadSceneAsync(string level)
     {
         yield return new WaitForSeconds(0.5f);
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Intro");
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress);

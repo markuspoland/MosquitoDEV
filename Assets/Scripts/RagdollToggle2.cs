@@ -25,22 +25,20 @@ public class RagdollToggle2 : MonoBehaviour
     Rigidbody[] childrenRigidbody;
 
     Revive revival;
-    
+
     // Start is called before the first frame update
     void Awake()
     {
         isCaught = false;
         theNet = GameObject.FindGameObjectWithTag("TheNet").transform;
         deathText = GameObject.FindGameObjectWithTag("DeathCount").GetComponent<TextMeshProUGUI>();
-        ragdollEnabled = false;
-        deathcount = 5;
         deathText.gameObject.SetActive(false);
+        deathcount = 5f;
         rotationKeeper = FindObjectOfType<RotationKeeper>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         rootTransform = GameObject.FindGameObjectWithTag("RootJoint").transform;
-
         mosqitController = GetComponent<MosqitController>();
 
         childrenCollider = GetComponentsInChildren<Collider>();
@@ -49,7 +47,7 @@ public class RagdollToggle2 : MonoBehaviour
         revival = GetComponent<Revive>();
 
         colliderCenter = capsuleCollider.center;
-        collided = false;    
+        collided = false;
     }
 
     void Start()
@@ -102,15 +100,15 @@ public class RagdollToggle2 : MonoBehaviour
             rigidbody.detectCollisions = true;
             rigidbody.isKinematic = false;
             rigidbody.AddForce(transform.forward * 15f, ForceMode.Impulse);
-            
+
         }
 
         //rb.velocity = new Vector3 (transform.position.x, transform.position.y, 3f);
-        
+
         anim.enabled = false;
         rb.detectCollisions = false;
         rb.isKinematic = true;
-        Destroy(capsuleCollider);
+        //Destroy(capsuleCollider);
         mosqitController.enabled = false;
     }
 
@@ -169,7 +167,7 @@ public class RagdollToggle2 : MonoBehaviour
             {
                 levelManager.CompleteLevel1Objective("Dino down");
             }
-            
+
             return;
         }
 

@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
         Preload,
         Intro,
         Menu,
-        TheRoom
+        TheRoom,
+        End
     }
 
     string currentScene;
