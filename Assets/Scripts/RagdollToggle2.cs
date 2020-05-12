@@ -171,6 +171,16 @@ public class RagdollToggle2 : MonoBehaviour
             return;
         }
 
+        if (LevelSoundManager.audioSource.clip == LevelSoundManager.suckBlood)
+        {
+            LevelSoundManager.audioSource.Stop();
+            LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager._hit);
+        }
+        else
+        {
+            LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager._hit);
+        }
+
         if (collision.collider.gameObject.tag != "TheNet")
         {
             mosqitController.RevivePitch();

@@ -88,6 +88,8 @@ public class Bloodspot : MonoBehaviour
 
         if (Bloodsuck.IsSucking)
         {
+            
+            player.GetComponent<AudioSource>().Pause();
             playerCol.enabled = false;
             suckButton.gameObject.SetActive(false);
             bloodFrame.gameObject.SetActive(true);
@@ -101,10 +103,11 @@ public class Bloodspot : MonoBehaviour
 
         if (swipeFailed)
         {
+            LevelSoundManager.audioSource.loop = false;
             StopCoroutine("FillBlood");
             boyAnim.SetTrigger("Kill");
             StartCoroutine("EnablePlayer");
-
+            
             timer = 3f;
         }
 
@@ -124,6 +127,7 @@ public class Bloodspot : MonoBehaviour
 
     IEnumerator FillBlood()
     {
+                
         foreach (Image img in gameUI)
         {
             img.gameObject.SetActive(false);
@@ -145,9 +149,11 @@ public class Bloodspot : MonoBehaviour
 
     IEnumerator EnablePlayer()
     {
+        
         yield return new WaitForSeconds(1.24f);
+                
+        player.GetComponent<AudioSource>().UnPause();
         bloodsuck = GameObject.FindGameObjectWithTag("Player").GetComponent<Bloodsuck>();
-
 
         if (playerCol)
         {

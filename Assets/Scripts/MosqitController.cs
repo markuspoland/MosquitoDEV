@@ -54,6 +54,7 @@ public class MosqitController : MonoBehaviour
     bool dashingRight;
     float cooldown;
 
+    float startVolume;
     
     // Start is called before the first frame update
     void Start()
@@ -86,11 +87,14 @@ public class MosqitController : MonoBehaviour
         brakeHandler = FindObjectOfType<BrakeHandler>().GetComponent<BrakeHandler>();
         diveHandler = FindObjectOfType<DiveHandler>().GetComponent<DiveHandler>();
         staminaSlider = GameObject.FindGameObjectWithTag("Stamina").GetComponent<Slider>();
+        startVolume = mosquitoAudio.volume;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
         if (cooldown > 0f)
         {
             cooldown -= Time.deltaTime;
@@ -107,6 +111,8 @@ public class MosqitController : MonoBehaviour
 
         staminaSlider.value = stamina / 2;
         Debug.Log("Stamina: " + stamina);
+
+        
     }
 
     private void FixedUpdate()

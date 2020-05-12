@@ -74,5 +74,10 @@ public class Bloodsuck : MonoBehaviour
         anim.SetBool("Sucking", IsSucking);
     }
 
-    
+    public void PlaySuckingSound()
+    {
+        LevelSoundManager.audioSource.loop = true;
+        LevelSoundManager.audioSource.clip = LevelSoundManager.suckBlood;
+        LevelSoundManager.audioSource.Play();
+    }
 }

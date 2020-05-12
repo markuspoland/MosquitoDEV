@@ -141,6 +141,16 @@ public class RagdollToggle3 : MonoBehaviour
             return;
         }
 
+        if (LevelSoundManager.audioSource.clip == LevelSoundManager.suckBlood)
+        {
+            LevelSoundManager.audioSource.Stop();
+            LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager._hit);
+        }
+        else
+        {
+            LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager._hit);
+        }
+
         Vibration.Vibrate(40);
         GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
         IsDead = true;
