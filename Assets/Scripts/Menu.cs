@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour
         loadingScreen.SetActive(true);
         audioSource.PlayOneShot(selectClip);
         StartCoroutine(FadeOut(musicSource, 0.2f));
-        StartCoroutine(LoadSceneAsync("Intro"));
+        StartCoroutine(LoadSceneAsync("Guide"));
     }
 
     public void ShowLevelSelect()
