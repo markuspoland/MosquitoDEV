@@ -202,7 +202,7 @@ public class Bloodspot : MonoBehaviour
     {
         arrow.SetActive(false);
         boyAnim.SetTrigger("Die");
-
+        LevelSoundManager.audioSource.Stop();
         Destroy(player.gameObject);
 
         levelTimer.GetComponent<Timer>().SetLevelTime();

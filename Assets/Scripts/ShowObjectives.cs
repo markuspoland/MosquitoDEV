@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class ShowObjectives : MonoBehaviour
 {
     TextMeshProUGUI textMesh;
     LevelManager levelManager;
+    string objectiveCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,13 @@ public class ShowObjectives : MonoBehaviour
     {
         textMesh = GetComponent<TextMeshProUGUI>();
         levelManager = FindObjectOfType<LevelManager>().GetComponent<LevelManager>();
-        textMesh.SetText(GameManager.Instance.ObjectivesCompleted.ToString() + " / 3");
+
+        if (SceneManager.GetActiveScene().name == "TheRoom")
+        {
+            objectiveCount = "4";
+        }
+
+        textMesh.SetText(GameManager.Instance.ObjectivesCompleted.ToString() + " / " + objectiveCount);
     }
 
     // Update is called once per frame
