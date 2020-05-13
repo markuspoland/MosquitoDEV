@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         Menu,
         TheRoom,
         End,
-        TestADScene
+        LastADScene
     }
 
     string currentScene;

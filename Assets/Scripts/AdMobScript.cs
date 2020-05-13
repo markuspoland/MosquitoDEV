@@ -105,7 +105,7 @@ public class AdMobScript : MonoBehaviour
     {
         MonoBehaviour.print("HandleAdClosed event received");
 
-        if (SceneManager.GetActiveScene().name != "LastAdScene")
+        if (SceneManager.GetActiveScene().name != "LastADScene")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         } else

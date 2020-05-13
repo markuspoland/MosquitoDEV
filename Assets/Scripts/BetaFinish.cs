@@ -18,6 +18,6 @@ public class BetaFinish : MonoBehaviour
 
     public void OK()
     {
-        GameManager.Instance.ChangeScene(GameManager.GameScene.TestADScene);
+        GameManager.Instance.ChangeScene(GameManager.GameScene.LastADScene);
     }
 }
