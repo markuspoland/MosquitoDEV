@@ -16,10 +16,12 @@ public class AdMobScript : MonoBehaviour
     private BannerView bannerView;
     private InterstitialAd interstitial;
     private RewardBasedVideoAd rewardBasedVideo;
+
+    bool bannerLoaded;
     void Start()
     {
         MobileAds.Initialize(App_ID);
-
+        bannerLoaded = false;
         //MobileAds.Initialize(initStatus => { });
 
 
@@ -31,16 +33,23 @@ public class AdMobScript : MonoBehaviour
 
         // Create a 320x50 banner at the top of the screen.
         this.bannerView = new BannerView(Banner_AD_ID, AdSize.Banner, AdPosition.Bottom);
-    }
-
-    public void ShowBannerAd()
-    {
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
 
         // Load the banner with the request.
         this.bannerView.LoadAd(request);
 
+        this.bannerView.OnAdLoaded += HandleOnBannerLoaded;
+    }
+
+    public void ShowBannerAd()
+    {
+        this.bannerView.Show();
+    }
+
+    public void HideBanner()
+    {
+        this.bannerView.Hide();
     }
 
     public void RequestInterstitial()
@@ -48,6 +57,7 @@ public class AdMobScript : MonoBehaviour
         this.interstitial = new InterstitialAd(Interstitial_AD_ID);
 
         // Called when the ad is closed.
+        this.interstitial.OnAdLoaded += HandleOnInterstitialAdLoaded;
         this.interstitial.OnAdClosed += HandleOnAdClosed;
 
         AdRequest request = new AdRequest.Builder().Build();
@@ -120,4 +130,23 @@ public class AdMobScript : MonoBehaviour
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
 
+    public void HandleOnInterstitialAdLoaded(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLoaded event received");
+        ShowInterstitialAd();
+    }
+
+    public void HandleOnBannerLoaded(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLoaded event received");
+        bannerLoaded = true;
+    }
+
+    private void OnDisable()
+    {
+        if (bannerLoaded)
+        {
+            bannerView.Hide();
+        }
+    }
 }

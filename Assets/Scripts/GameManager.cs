@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         Preload,
         Intro,
+        ADScene1,
         Menu,
         TheRoom,
         End,

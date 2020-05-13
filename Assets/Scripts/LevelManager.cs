@@ -177,7 +177,7 @@ public class LevelManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+        GameManager.Instance.ChangeScene(GameManager.GameScene.ADScene1);
     }
 
     public void End()

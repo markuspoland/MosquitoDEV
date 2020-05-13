@@ -10,6 +10,8 @@ public class CloneActivator1 : MonoBehaviour
     MosqitController controller;
     RagdollToggle1 ragdoll;
     public ParticleSystem reviveParticle;
+    AudioSource audioSource;
+    [SerializeField] AudioClip reviveSound;
     RotationKeeper rotationKeeper;
     
     Collider[] childrenCollider;
@@ -18,7 +20,10 @@ public class CloneActivator1 : MonoBehaviour
     void Start()
     {
         Instantiate(reviveParticle, transform.position, Quaternion.identity);
-                
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(reviveSound);
+        
+
         childrenCollider = GetComponentsInChildren<Collider>();
         childrenRigidbody = GetComponentsInChildren<Rigidbody>();
 

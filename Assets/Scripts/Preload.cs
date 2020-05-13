@@ -6,10 +6,10 @@ public class Preload : MonoBehaviour
 {
 
     float timer = 3f;
-
+    [SerializeField] AdMobScript admob;
     void Start()
     {
-        
+        admob.RequestBanner();
     }
 
     // Update is called once per frame
@@ -22,4 +22,6 @@ public class Preload : MonoBehaviour
             GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
         }
     }
+
+    
 }

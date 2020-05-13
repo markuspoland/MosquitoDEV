@@ -2584,6 +2584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reviveParticle: {fileID: 6464529393130321777, guid: 7b4ff456741c9dc4d86f9379de964ae8,
     type: 3}
+  reviveSound: {fileID: 8300000, guid: df360e3ac8d785447a69e5ff5be393f1, type: 3}
 --- !u!114 &-6213996977245570010
 MonoBehaviour:
   m_ObjectHideFlags: 0

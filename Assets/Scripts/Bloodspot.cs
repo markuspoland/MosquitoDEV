@@ -35,6 +35,7 @@ public class Bloodspot : MonoBehaviour
     public GameObject stamina;
     public AudioSource musicSource;
 
+    [SerializeField] AdMobScript admob;
 
     public CinemachineVirtualCamera suckingCamera;
     public CinemachineVirtualCamera boyDeathCamera;
@@ -200,6 +201,7 @@ public class Bloodspot : MonoBehaviour
 
     void BoyDeath()
     {
+        admob.RequestBanner();
         arrow.SetActive(false);
         boyAnim.SetTrigger("Die");
         LevelSoundManager.audioSource.Stop();
@@ -239,6 +241,7 @@ public class Bloodspot : MonoBehaviour
 
     private void OnDisable()
     {
+        
         EventManager.StopListening("BoyDeath", BoyDeath);
     }
 
