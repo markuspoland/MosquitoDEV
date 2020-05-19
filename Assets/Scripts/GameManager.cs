@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         Intro,
         ADScene1,
         Menu,
+        ADScene2,
         TheRoom,
         End,
         LastADScene

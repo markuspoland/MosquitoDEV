@@ -13,7 +13,9 @@ public class GameOver : MonoBehaviour
     public static Image gameOverImage;
     Button restartButton;
     public GameObject[] gameUI;
+    [SerializeField] GameObject backToMenu;
     public static GameObject[] imageUI;
+    public static GameObject menuButton;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class GameOver : MonoBehaviour
         
         joystickVert = GameObject.FindGameObjectWithTag("JoystickVert");
         imageUI = gameUI;
-        
+        menuButton = backToMenu;
     }
 
     // Update is called once per frame
@@ -46,9 +48,10 @@ public class GameOver : MonoBehaviour
             var tempColor = gameOverImage.color;
             tempColor.a += 0.2f * Time.deltaTime;
             gameOverImage.color = tempColor;
-
+            menuButton.SetActive(true);
             MosqitController mosqitController = GameObject.FindGameObjectWithTag("Player").GetComponent<MosqitController>();
             mosqitController.DeadSound();
+            
         }
     }
 

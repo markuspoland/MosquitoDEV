@@ -25,7 +25,7 @@ public class RageLight : MonoBehaviour
     [SerializeField] GameObject arrow1;
     [SerializeField] GameObject arrow2;
     [SerializeField] GameObject arrow4;
-
+    
     [SerializeField] GameObject rageEffect;
     [SerializeField] AudioClip rageSound;
     AudioSource audioSource;
@@ -137,7 +137,7 @@ public class RageLight : MonoBehaviour
 
     private void OnTriggerEnter(Collider plr)
     {
-        if (plr.tag == "Player")
+        if (plr.gameObject.name.Contains("Mosquito"))
         {
             isInLight = true;
         }

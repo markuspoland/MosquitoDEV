@@ -25,6 +25,6 @@ public class restartGame : MonoBehaviour
     // Start is called before the first frame update
     public void RestartGame()
     {
-        GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+        GameManager.Instance.ChangeScene(GameManager.GameScene.ADScene2);
     }
 }

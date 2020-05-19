@@ -37,6 +37,7 @@ TagManager:
   - Stamina
   - CeilingRage
   - CandleRage
+  - AdMob
   layers:
   - Default
   - TransparentFX
