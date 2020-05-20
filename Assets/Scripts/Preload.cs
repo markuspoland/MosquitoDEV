@@ -5,11 +5,11 @@ using UnityEngine;
 public class Preload : MonoBehaviour
 {
 
-    float timer = 3f;
-    [SerializeField] AdMobScript admob;
+    float timer = 5f;
+    
     void Start()
     {
-        admob.RequestBanner();
+        
     }
 
     // Update is called once per frame

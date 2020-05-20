@@ -9,8 +9,8 @@ public class AdMobScript : MonoBehaviour
 {
     string App_ID = "ca-app-pub-4656290979684203~9381457693";
 
-    string Banner_AD_ID = "ca-app-pub-3940256099942544/6300978111";
-    string Interstitial_AD_ID = "ca-app-pub-3940256099942544/1033173712";
+    string Banner_AD_ID = "ca-app-pub-4656290979684203/6340516919";
+    string Interstitial_AD_ID = "ca-app-pub-4656290979684203/1212506836";
     string Video_AD_ID = "ca-app-pub-3940256099942544/5224354917";
 
     private BannerView bannerView;

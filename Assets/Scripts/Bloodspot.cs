@@ -70,22 +70,22 @@ public class Bloodspot : MonoBehaviour
     void Update()
     {
         Debug.Log(RageLight.enraged);
-        //if (RageLight.enraged)
-        //{
-        if (player != null)
+        if (RageLight.enraged)
         {
-            distanceFromBloodSpot = Vector3.Distance(transform.position, player.position);
+            if (player != null)
+            {
+                distanceFromBloodSpot = Vector3.Distance(transform.position, player.position);
 
-            if (distanceFromBloodSpot < 20f && !MosqitController.playerDead && !MosqitController.isInRagdoll)
-            {
-                suckButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                suckButton.gameObject.SetActive(false);
+                if (distanceFromBloodSpot < 20f && !MosqitController.playerDead && !MosqitController.isInRagdoll)
+                {
+                    suckButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    suckButton.gameObject.SetActive(false);
+                }
             }
         }
-        //}
 
         if (Bloodsuck.IsSucking)
         {

@@ -7,7 +7,7 @@ public class ShowVideoAd : MonoBehaviour
     [SerializeField] AdMobScript admob;
     void Start()
     {
-        admob.RequestRewardBasedVideo();
+        admob.RequestInterstitial();
         
     }
 
