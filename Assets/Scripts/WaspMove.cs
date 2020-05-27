@@ -13,17 +13,20 @@ public class WaspMove : MonoBehaviour
     Animator anim;
     float speed = 65f;
     float pursueSpeed = 50f;
+    float attackSpeed = 70f;
     float rotSpeed = 10f;
     float distanceFromPlayer;
     float pursueDistance = 100f;
     float pursueCounter;
     bool isPursuing;
+    bool isAttacking;
     Vector3 playerBarrier;
-
+    Vector3 endPos;
     WaspState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        isAttacking = false;
         anim = GetComponent<Animator>();
         currentState = WaspState.Patrol;
         pursueCounter = 7f;
@@ -41,6 +44,8 @@ public class WaspMove : MonoBehaviour
         {
             case WaspState.Patrol:
                 {
+                    isAttacking = false;
+
                     if (targetWaypoint == waypoints[waypoints.Length - 1])
                     {
                         currentWaypoint = 0;
@@ -102,15 +107,32 @@ public class WaspMove : MonoBehaviour
             case WaspState.Attack:
                 {
 
-                    PursuePlayer();
+                    //PursuePlayer();
                     
                     
-                    CheckDistanceFromPlayer();
+                    //CheckDistanceFromPlayer();
 
-                    if (distanceFromPlayer < 6f)
-                    {
-                        StartCoroutine(Attack());
-                    }
+                    //if (distanceFromPlayer < 6.5f)
+                    //{
+
+                        transform.forward = Vector3.RotateTowards(transform.forward, targetWaypoint.position - transform.position, rotSpeed * Time.deltaTime, 0.0f);
+                    
+
+                        if (!isAttacking)
+                        {
+                        endPos = player.position + playerBarrier;
+                        transform.position = Vector3.MoveTowards(transform.position, endPos, attackSpeed * Time.deltaTime);
+                        }
+
+                        if (transform.position == endPos)
+                        {
+                            isAttacking = true;
+                            StartCoroutine(Attack());
+                            
+                        }
+
+                        
+                   // }
 
                     
                     break;
@@ -167,14 +189,26 @@ public class WaspMove : MonoBehaviour
 
     IEnumerator Attack ()
     {
-        transform.forward = Vector3.RotateTowards(transform.forward, targetWaypoint.position - transform.position, rotSpeed * Time.deltaTime, 0.0f);
-        transform.position = Vector3.MoveTowards(transform.position, player.position + playerBarrier, speed * Time.deltaTime);
+                        
+        //transform.position = Vector3.MoveTowards(transform.position, lastPlayerPos + playerBarrier, speed * Time.deltaTime);
         sting.enabled = true;
         anim.SetTrigger("WaspHit");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.8f);
         sting.enabled = false;
         pursueCounter = 7;
         distanceFromPlayer = 200f;
         currentState = WaspState.Patrol;
+        
+    }
+
+    Vector3 GetPlayerPosition()
+    {
+        
+            Vector3 lastPlayerPos = player.position;
+            return lastPlayerPos;
+     
+
+        
+        
     }
 }

@@ -22,7 +22,7 @@ public class RagdollToggle3 : MonoBehaviour
     public TextMeshProUGUI deathText;
     float deathcount;
     bool ragdollEnabled;
-    AdMobScript admob;
+    
 
 
     Collider[] childrenCollider;
@@ -51,7 +51,7 @@ public class RagdollToggle3 : MonoBehaviour
         colliderCenter = capsuleCollider.center;
         collided = false;
         reviveButton = GameObject.FindGameObjectWithTag("ReviveButton").GetComponent<Button>();
-        admob = GameObject.FindGameObjectWithTag("AdMob").GetComponent<AdMobScript>();
+        
 
         ChangePlayerState();
         
@@ -152,7 +152,7 @@ public class RagdollToggle3 : MonoBehaviour
             LevelSoundManager.audioSource.PlayOneShot(LevelSoundManager._hit);
         }
 
-        admob.RequestBanner();
+        
         Vibration.Vibrate(40);
         GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
         IsDead = true;

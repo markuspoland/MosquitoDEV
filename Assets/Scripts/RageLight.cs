@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class RageLight : MonoBehaviour
 {
-    float rageLevel = 0.23f;
-    float rageDrop = 0.12f;
+    float rageLevel = 0.28f;
+    float rageDrop = 0.10f;
     bool isInLight;
     bool isInHitRange;
     Image rage;
