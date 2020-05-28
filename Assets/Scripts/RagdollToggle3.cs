@@ -24,7 +24,6 @@ public class RagdollToggle3 : MonoBehaviour
     bool ragdollEnabled;
     
 
-
     Collider[] childrenCollider;
     Rigidbody[] childrenRigidbody;
     Revive revival;
@@ -162,11 +161,10 @@ public class RagdollToggle3 : MonoBehaviour
     }
 
     void ChangePlayerState()
-    {            
-            
-     Destroy(revival);
-     reviveButton.gameObject.SetActive(false);
-
+    {
+         
+        Destroy(revival);
+        reviveButton.gameObject.SetActive(false);
     }
 
     void SetColliderPosition()

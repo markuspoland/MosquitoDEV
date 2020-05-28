@@ -36,6 +36,7 @@ public class Bloodspot : MonoBehaviour
     public AudioSource musicSource;
 
     [SerializeField] AdMobScript admob;
+    [SerializeField] GameObject settingsButton;
 
     public CinemachineVirtualCamera suckingCamera;
     public CinemachineVirtualCamera boyDeathCamera;
@@ -92,6 +93,7 @@ public class Bloodspot : MonoBehaviour
             
             player.GetComponent<AudioSource>().Pause();
             playerCol.enabled = false;
+            settingsButton.SetActive(false);
             suckButton.gameObject.SetActive(false);
             bloodFrame.gameObject.SetActive(true);
             bloodFill.gameObject.SetActive(true);
@@ -176,6 +178,7 @@ public class Bloodspot : MonoBehaviour
             img.gameObject.SetActive(true);
         }
 
+        //settingsButton.SetActive(true);
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);
@@ -211,7 +214,7 @@ public class Bloodspot : MonoBehaviour
         levelTimer.SetActive(false);
         bonus.SetActive(false);
         stamina.SetActive(false);
-
+        settingsButton.SetActive(false);
         suckButton.gameObject.SetActive(false);
         bloodFrame.gameObject.SetActive(false);
         bloodFill.gameObject.SetActive(false);

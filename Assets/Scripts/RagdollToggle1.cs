@@ -27,12 +27,13 @@ public class RagdollToggle1 : MonoBehaviour
     Rigidbody[] childrenRigidbody;
 
     Revive revival;
-
+    [SerializeField] GameObject settingsButton;
     GameObject bloodFx;
     // Start is called before the first frame update
     void Awake()
     {
         isCaught = false;
+        settingsButton = GameObject.FindGameObjectWithTag("Settings");
         theNet = GameObject.FindGameObjectWithTag("TheNet").transform;
         deathText = GameObject.FindGameObjectWithTag("DeathCount").GetComponent<TextMeshProUGUI>();
         deathText.gameObject.SetActive(false);
@@ -190,9 +191,11 @@ public class RagdollToggle1 : MonoBehaviour
             GameObject blood = Instantiate(Resources.Load("CFX2_Blood", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
             RagdollEnabled();
             LevelManager.TakeLife(2);
+            settingsButton.SetActive(false);
         }
         else
         {
+            settingsButton.SetActive(false);
             mosqitController.RevivePitch();
             isCaught = true;
             anim.SetBool("caught", isCaught);
@@ -211,6 +214,7 @@ public class RagdollToggle1 : MonoBehaviour
         if (revival.revivePoints >= 100)
         {                       
             Instantiate(PlayerPrefabManager.Instance.PlayerPrefab1, rootTransform.position + 10f * Vector3.up, Quaternion.Inverse(Quaternion.identity));
+            settingsButton.SetActive(true);
             Destroy(gameObject);
         }
     }

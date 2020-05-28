@@ -14,8 +14,10 @@ public class GameOver : MonoBehaviour
     Button restartButton;
     public GameObject[] gameUI;
     [SerializeField] GameObject backToMenu;
+    [SerializeField] GameObject settingsButton;
     public static GameObject[] imageUI;
     public static GameObject menuButton;
+    public static GameObject settingsBtn;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +30,10 @@ public class GameOver : MonoBehaviour
         joystickVert = GameObject.FindGameObjectWithTag("JoystickVert");
         imageUI = gameUI;
         menuButton = backToMenu;
+        settingsBtn = settingsButton;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -38,6 +41,8 @@ public class GameOver : MonoBehaviour
         
     public static void GameIsOver()
     {
+        settingsBtn.SetActive(false);
+
         if (gameOverImage.color.a < 1f)
         {
             foreach(GameObject img in imageUI)
