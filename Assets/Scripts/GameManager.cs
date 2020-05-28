@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
     public int tempHighscore;
     public int highscore;
 
+    public bool isPaused = false;
+    public bool invertControls = false;
+    public float verticalSensitivity = 0f;
+    public float horizontalSensitivity = 0f;
+
     void Awake()
     {
         if (_instance == null)

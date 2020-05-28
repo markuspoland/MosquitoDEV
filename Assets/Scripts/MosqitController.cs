@@ -55,6 +55,9 @@ public class MosqitController : MonoBehaviour
     float cooldown;
 
     float startVolume;
+
+    float verticalSensitivity;
+    float horizontalSensitivity;
     
     // Start is called before the first frame update
     void Start()
@@ -93,7 +96,7 @@ public class MosqitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CalculateSensitivity();
         
         if (cooldown > 0f)
         {
@@ -106,7 +109,7 @@ public class MosqitController : MonoBehaviour
         }
 
         HandleBrakeAndAccelerate();
-
+        HandleMosquitoSound();
 
 
         staminaSlider.value = stamina / 2;
@@ -122,7 +125,15 @@ public class MosqitController : MonoBehaviour
         Rotation();
 
         rb.AddRelativeForce(Vector3.up * upForce);
-        rb.rotation = Quaternion.Euler(new Vector3(tiltAmountForward, currentYRotation - 0.5f, tiltAmountSide));
+
+        if (GameManager.Instance.horizontalSensitivity >= 0)
+        {
+            rb.rotation = Quaternion.Euler(new Vector3(tiltAmountForward, currentYRotation - 0.5f, tiltAmountSide));
+        } else
+        {
+            rb.rotation = Quaternion.Euler(new Vector3(tiltAmountForward, currentYRotation - 0.5f, -tiltAmountSide));
+        }
+        
 
         if (dashingLeft)
         {
@@ -143,14 +154,14 @@ public class MosqitController : MonoBehaviour
 
         if (flyHandle.Horizontal < 0)
         {
-            wantedYRotation += flyHandle.Horizontal * rotateAmountByKeys;
+            wantedYRotation += flyHandle.Horizontal * (rotateAmountByKeys + horizontalSensitivity);
             PitchDown();
             PanLeft();
         } 
 
         if (flyHandle.Horizontal > 0)
         {
-            wantedYRotation += flyHandle.Horizontal * rotateAmountByKeys;
+            wantedYRotation += flyHandle.Horizontal * (rotateAmountByKeys + horizontalSensitivity);
             PitchDown();
             PanRight();
         }
@@ -182,37 +193,56 @@ public class MosqitController : MonoBehaviour
         tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 30 * -Input.GetAxis("Vertical"), ref tiltVelocityForward, 0.2f);
         tiltAmountSide = Mathf.SmoothDamp(tiltAmountSide, 30 * -Input.GetAxis("Horizontal"), ref tiltVelocitySide, 0.1f);
 
-        tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 70 * -flyHandle.Vertical, ref tiltVelocityForward, 0.2f);
-        tiltAmountSide = Mathf.SmoothDamp(tiltAmountSide, 50 * -flyHandle.Horizontal, ref tiltVelocitySide, 0.1f);
+        if (!GameManager.Instance.invertControls)
+        {
+            tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 70 * -flyHandle.Vertical, ref tiltVelocityForward, 0.2f);
+        } else
+        {
+            tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 70 * flyHandle.Vertical, ref tiltVelocityForward, 0.2f);
+        }
+        
+
+        if (GameManager.Instance.horizontalSensitivity >= 0)
+        {
+            tiltAmountSide = Mathf.SmoothDamp(tiltAmountSide, 50 * -flyHandle.Horizontal, ref tiltVelocitySide, 0.1f);
+        } else
+        {
+            tiltAmountSide = Mathf.SmoothDamp(tiltAmountSide, 50 * flyHandle.Horizontal, ref tiltVelocitySide, 0.1f);
+        }
+        
 
     }
 
     private void MovementUpDown()
     {
-        if (flyHandle.Vertical > 0)
-        {
-            upForce = flyHandle.Vertical * 800f;
-            
-        }
-        else if (flyHandle.Vertical < 0)
-        {
-            upForce = flyHandle.Vertical * 900f;
-        } else
-        {
-            upForce = Mathf.Lerp(upForce, 0f, 0.5f);
-        }
+        
+            if (flyHandle.Vertical > 0)
+            {
+                upForce = flyHandle.Vertical * (800f + verticalSensitivity);
 
-        if (Input.GetAxis("Vertical") > 0)
-        {
-            upForce = 300f;
-        } else if (Input.GetAxis("Vertical") < 0)
-        {
-            upForce = -300f;
-        } else
-        {
-            upForce = Mathf.Lerp(upForce, 0f, 0.5f);
-        }
+            }
+            else if (flyHandle.Vertical < 0)
+            {
+                upForce = flyHandle.Vertical * (900f + verticalSensitivity);
+            }
+            else
+            {
+                upForce = Mathf.Lerp(upForce, 0f, 0.5f);
+            }
 
+            if (Input.GetAxis("Vertical") > 0)
+            {
+                upForce = 300f;
+            }
+            else if (Input.GetAxis("Vertical") < 0)
+            {
+                upForce = -300f;
+            }
+            else
+            {
+                upForce = Mathf.Lerp(upForce, 0f, 0.5f);
+            }
+              
     }
 
     void HandleBrakeAndAccelerate()
@@ -431,5 +461,27 @@ public class MosqitController : MonoBehaviour
         }
     }
 
-    
+    void HandleMosquitoSound()
+    {
+        if (GameManager.Instance.isPaused)
+        {
+            mosquitoAudio.Pause();
+        } else
+        {
+            mosquitoAudio.UnPause();
+        }
+    }
+
+    void CalculateSensitivity()
+    {
+        verticalSensitivity = GameManager.Instance.verticalSensitivity;
+
+        if ( Mathf.Approximately(GameManager.Instance.horizontalSensitivity, 0))
+        {
+            horizontalSensitivity = 0f;
+        } else
+        {
+            horizontalSensitivity = GameManager.Instance.horizontalSensitivity / 100f;
+        }
+    }
 } 
