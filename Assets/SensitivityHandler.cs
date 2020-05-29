@@ -7,9 +7,12 @@ using System;
 public class SensitivityHandler : MonoBehaviour
 {
     TextMeshProUGUI textMesh;
+    int sensIncrement;
+    int sensValue;
     void Start()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
+        sensIncrement = 100;
     }
 
     // Update is called once per frame
@@ -22,12 +25,11 @@ public class SensitivityHandler : MonoBehaviour
     {
         if(textMesh.text != "500")
         {
-            int sensIncrement = 100;
-            int sensValue = Convert.ToInt32(textMesh.text);
+            sensValue = int.Parse(textMesh.text);
             sensValue += sensIncrement;
-            textMesh.SetText(sensValue.ToString());
             GameManager.Instance.horizontalSensitivity = sensValue;
             GameManager.Instance.verticalSensitivity = sensValue;
+            textMesh.SetText(sensValue.ToString());
         }
     }
 
@@ -35,12 +37,12 @@ public class SensitivityHandler : MonoBehaviour
     {
         if (textMesh.text != "-500")
         {
-            int sensDecrement = 100;
-            int sensValue = Convert.ToInt32(textMesh.text);
-            sensValue -= sensDecrement;
-            textMesh.SetText(sensValue.ToString());
+            
+            sensValue = int.Parse(textMesh.text);
+            sensValue -= sensIncrement;
             GameManager.Instance.horizontalSensitivity = sensValue;
             GameManager.Instance.verticalSensitivity = sensValue;
+            textMesh.SetText(sensValue.ToString());
         }
     }
 }

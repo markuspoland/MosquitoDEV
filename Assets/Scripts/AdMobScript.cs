@@ -9,6 +9,7 @@ public class AdMobScript : MonoBehaviour
 {
     string App_ID = "ca-app-pub-4656290979684203~9381457693";
 
+    string Test_Device_ID = "F461AFB79D9DD0D2";
     string Banner_AD_ID = "ca-app-pub-4656290979684203/6340516919";
     string Interstitial_AD_ID = "ca-app-pub-4656290979684203/1212506836";
     string Video_AD_ID = "ca-app-pub-3940256099942544/5224354917";
@@ -34,7 +35,7 @@ public class AdMobScript : MonoBehaviour
         // Create a 320x50 banner at the top of the screen.
         this.bannerView = new BannerView(Banner_AD_ID, AdSize.Banner, AdPosition.Bottom);
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice(Test_Device_ID).Build();
 
         // Load the banner with the request.
         this.bannerView.LoadAd(request);
@@ -60,7 +61,7 @@ public class AdMobScript : MonoBehaviour
         this.interstitial.OnAdLoaded += HandleOnInterstitialAdLoaded;
         this.interstitial.OnAdClosed += HandleOnAdClosed;
 
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().AddTestDevice(Test_Device_ID).Build();
         this.interstitial.LoadAd(request);
     }
 
@@ -148,5 +149,10 @@ public class AdMobScript : MonoBehaviour
         {
             bannerView.Hide();
         }
+    }
+
+    public bool IsInterstitialReady()
+    {
+        return this.interstitial.IsLoaded();
     }
 }
