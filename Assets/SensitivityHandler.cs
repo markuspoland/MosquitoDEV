@@ -23,9 +23,9 @@ public class SensitivityHandler : MonoBehaviour
 
     public void ButtonRight()
     {
-        if(textMesh.text != "500")
+        if(GameManager.Instance.horizontalSensitivity <= 400)
         {
-            sensValue = int.Parse(textMesh.text);
+            sensValue = (int)GameManager.Instance.horizontalSensitivity;
             sensValue += sensIncrement;
             GameManager.Instance.horizontalSensitivity = sensValue;
             GameManager.Instance.verticalSensitivity = sensValue;
@@ -35,10 +35,10 @@ public class SensitivityHandler : MonoBehaviour
 
     public void ButtonLeft()
     {
-        if (textMesh.text != "-500")
+        if (GameManager.Instance.horizontalSensitivity >= -200)
         {
             
-            sensValue = int.Parse(textMesh.text);
+            sensValue = (int)GameManager.Instance.horizontalSensitivity;
             sensValue -= sensIncrement;
             GameManager.Instance.horizontalSensitivity = sensValue;
             GameManager.Instance.verticalSensitivity = sensValue;
