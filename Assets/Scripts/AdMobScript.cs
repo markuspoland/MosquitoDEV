@@ -12,6 +12,7 @@ public class AdMobScript : MonoBehaviour
     string Test_Device_ID = "F461AFB79D9DD0D2";
     string Banner_AD_ID = "ca-app-pub-4656290979684203/6340516919";
     string Interstitial_AD_ID = "ca-app-pub-4656290979684203/1212506836";
+    string Interstitial_Test_AD_ID = "ca-app-pub-3940256099942544/1033173712";
     string Video_AD_ID = "ca-app-pub-3940256099942544/5224354917";
 
     private BannerView bannerView;
@@ -22,6 +23,7 @@ public class AdMobScript : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(App_ID);
+        //MobileAds.Initialize(initStatus => { Debug.Log("LOADED?"); });
         bannerLoaded = false;
         //MobileAds.Initialize(initStatus => { });
 

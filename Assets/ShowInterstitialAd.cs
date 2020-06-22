@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class ShowInterstitialAd : MonoBehaviour
@@ -9,11 +11,37 @@ public class ShowInterstitialAd : MonoBehaviour
     float timer;
     void Start()
     {
-        if (Application.internetReachability != NetworkReachability.NotReachable)
+        StartCoroutine(checkInternetConnection((isConnected) => {
+            if (isConnected)
+            {
+                admob.RequestInterstitial();
+            }
+
+            if (!isConnected)
+            {
+                if (SceneManager.GetActiveScene().name != "LastADScene")
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+                }
+            }
+        }));
+
+        if (Application.platform == RuntimePlatform.WindowsEditor)
         {
-            admob.RequestInterstitial();
+            if (SceneManager.GetActiveScene().name != "LastADScene")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+            }
         }
-        
+
         timer = 5.0f;
     }
 
@@ -32,6 +60,20 @@ public class ShowInterstitialAd : MonoBehaviour
             {
                 GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
             }
+        }
+    }
+
+    IEnumerator checkInternetConnection(Action<bool> action)
+    {
+        UnityWebRequest www = new UnityWebRequest("http://google.com");
+        yield return www;
+        if (www.error != null)
+        {
+            action(false);
+        }
+        else
+        {
+            action(true);
         }
     }
 }

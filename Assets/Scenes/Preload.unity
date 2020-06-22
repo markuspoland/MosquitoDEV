@@ -424,6 +424,10 @@ MonoBehaviour:
   level3Points: 0
   tempHighscore: 0
   highscore: 0
+  isPaused: 0
+  invertControls: 0
+  verticalSensitivity: 0
+  horizontalSensitivity: 0
 --- !u!4 &737277905
 Transform:
   m_ObjectHideFlags: 0

@@ -137,6 +137,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.UpdateHighscore();
         StartCoroutine(ShowStats());
         GameManager.Instance.SaveScore();
+        
     }
 
     IEnumerator ShowStats()

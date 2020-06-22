@@ -4,6 +4,9 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
 
 
 public class GameManager : MonoBehaviour
@@ -65,6 +68,8 @@ public class GameManager : MonoBehaviour
     public float verticalSensitivity = 0f;
     public float horizontalSensitivity = 0f;
 
+    public static PlayGamesPlatform platform;
+
     void Awake()
     {
         if (_instance == null)
@@ -81,8 +86,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
 
+        InitializeGoogle();
     }
 
     // Update is called once per frame
@@ -103,6 +108,7 @@ public class GameManager : MonoBehaviour
         if (tempHighscore > highscore)
         {
             highscore = tempHighscore;
+            UpdateLeaderboardScore();
             tempHighscore = 0;
         }
     }
@@ -131,6 +137,45 @@ public class GameManager : MonoBehaviour
             fs.Close();
             highscore = saveData.score;
         }
+    }
+
+    void InitializeGoogle()
+    {
+        if (platform == null)
+        {
+            PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+            PlayGamesPlatform.InitializeInstance(config);
+            PlayGamesPlatform.DebugLogEnabled = true;
+
+            platform = PlayGamesPlatform.Activate();
+        }
+
+        Social.Active.localUser.Authenticate(success => { 
+        
+            if (success)
+            {
+                Debug.Log("Logged in.");
+            } else
+            {
+                Debug.Log("Login failed.");
+            }
+            
+        });
+    }
+
+    public void OpenLeaderboard()
+    {
+        Social.ShowLeaderboardUI();
+    }
+
+    public void UpdateLeaderboardScore()
+    {
+        if (highscore == 0)
+        {
+            return;
+        }
+
+        Social.ReportScore(highscore, GPGSIds.leaderboard_high_score, null);
     }
 }
 

@@ -13,7 +13,7 @@ public class CloneActivator1 : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip reviveSound;
     RotationKeeper rotationKeeper;
-    
+
     Collider[] childrenCollider;
     Rigidbody[] childrenRigidbody;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class CloneActivator1 : MonoBehaviour
         Instantiate(reviveParticle, transform.position, Quaternion.identity);
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(reviveSound);
-        
+
 
         childrenCollider = GetComponentsInChildren<Collider>();
         childrenRigidbody = GetComponentsInChildren<Rigidbody>();
@@ -37,6 +37,7 @@ public class CloneActivator1 : MonoBehaviour
             rigidbody.isKinematic = true;
 
         }
+
 
         GameManager.Instance.levelRevivesCount++;
         GameManager.Instance.reviveBonus -= 20;
@@ -54,14 +55,14 @@ public class CloneActivator1 : MonoBehaviour
         controller.currentYRotation = rotationKeeper.PlayerRotationY;
         controller.wantedYRotation = rotationKeeper.PlayerRotationY;
         gameObject.tag = "Player";
-        
+
         Invoke("AddRagdoll", 0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void AddRagdoll()
@@ -70,5 +71,4 @@ public class CloneActivator1 : MonoBehaviour
         ragdoll = GetComponent<RagdollToggle1>();
     }
 
-    
 }

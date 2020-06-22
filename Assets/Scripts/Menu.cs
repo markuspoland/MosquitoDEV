@@ -60,6 +60,7 @@ public class Menu : MonoBehaviour
     public void Leaderboard()
     {
         audioSource.PlayOneShot(selectClip);
+        GameManager.Instance.OpenLeaderboard();
     }
 
     public void Exit()
