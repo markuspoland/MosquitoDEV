@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject highscore;
     [SerializeField] GameObject menu;
     [SerializeField] GameObject continueGame;
+    [SerializeField] GameObject menuPanel;
+    [SerializeField] GameObject continuePanel;
     Timer timer;
 
     string currentLevel;
@@ -60,7 +62,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.LoadScore();
+        GameManager.Instance.tempHighscore = 0;
         GameManager.Instance.levelCoinPoints = 0;
         GameManager.Instance.levelRevivesCount = 0;
         GameManager.Instance.reviveBonus = 80;
@@ -129,7 +131,7 @@ public class LevelManager : MonoBehaviour
         switch (currentLevel)
         {
             case "TheRoom":
-                GameManager.Instance.level1Points += GameManager.Instance.levelCoinPoints + GameManager.Instance.reviveBonus + GameManager.Instance.timeBonus + GameManager.Instance.objectivePoints;
+                GameManager.Instance.level1Points = GameManager.Instance.levelCoinPoints + GameManager.Instance.reviveBonus + GameManager.Instance.timeBonus + GameManager.Instance.objectivePoints;
                 break;
                                    
         }
@@ -184,5 +186,21 @@ public class LevelManager : MonoBehaviour
     public void End()
     {
         GameManager.Instance.ChangeScene(GameManager.GameScene.End);
+    }
+
+    public void EnableShareContinue()
+    {
+        continuePanel.SetActive(true);
+    }
+
+    public void EnableShareMenu()
+    {
+        if (!Bloodspot.boyIsDead)
+        {
+            GameManager.Instance.ChangeScene(GameManager.GameScene.ADScene1);
+        } else
+        {
+            menuPanel.SetActive(true);
+        }
     }
 }
