@@ -1718,6 +1718,7 @@ MonoBehaviour:
   newMosquito: {fileID: 6423365738802516506, guid: 448aaeb711e1fb042a75c04b01e0ddfd,
     type: 3}
   deathText: {fileID: 0}
+  settingsButton: {fileID: 0}
   bloodFx: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
 --- !u!114 &2454651372673866487
 MonoBehaviour:

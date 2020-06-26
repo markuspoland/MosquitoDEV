@@ -98,7 +98,7 @@ public class WaspMove : MonoBehaviour
                     if (distanceFromPlayer < 7f)
                     {
                         currentState = WaspState.Attack;
-                    }
+                    } 
                     
                     
                     break;
@@ -118,11 +118,11 @@ public class WaspMove : MonoBehaviour
                         transform.forward = Vector3.RotateTowards(transform.forward, targetWaypoint.position - transform.position, rotSpeed * Time.deltaTime, 0.0f);
                     
 
-                        if (!isAttacking)
-                        {
+                        //if (!isAttacking)
+                        //{
                         endPos = player.position + playerBarrier;
                         transform.position = Vector3.MoveTowards(transform.position, endPos, attackSpeed * Time.deltaTime);
-                        }
+                        //}
 
                         if (transform.position == endPos)
                         {
@@ -131,7 +131,10 @@ public class WaspMove : MonoBehaviour
                             
                         }
 
-                        
+                        if (distanceFromPlayer > 3f)
+                    {
+                        currentState = WaspState.Pursue;
+                    }
                    // }
 
                     

@@ -138,7 +138,7 @@ public class MosqitController : MonoBehaviour
         if (dashingLeft)
         {
             DashLeft();
-            //dashing = false;
+            
         }
 
         if (dashingRight)
@@ -294,23 +294,18 @@ public class MosqitController : MonoBehaviour
 
     public void Flip()
     {
-        rotationKeeper.PlayerRotationY = Quaternion.LookRotation(-transform.forward, transform.up).y * 126.72747f;
-        StartCoroutine("BackFlip");
-                
+        var targetAngles = transform.eulerAngles + 180f * Vector3.up;
+        StartCoroutine(BackFlip(targetAngles));
     }
 
-    IEnumerator BackFlip()
+    IEnumerator BackFlip(Vector3 rotation)
     {
-        
         anim.applyRootMotion = true;
         isFlipping = true;
-        //rb.isKinematic = true;
-        
         anim.SetTrigger("backflip");
-        //yield return new WaitForSeconds(0.3f);
         anim.applyRootMotion = false;
-        wantedYRotation = rotationKeeper.PlayerRotationY;
-        //rb.isKinematic = false;
+        wantedYRotation = transform.localRotation.y;
+        wantedYRotation = rotation.y;
         isFlipping = false;
         yield return new WaitForEndOfFrame();
     }
